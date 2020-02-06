@@ -45,6 +45,7 @@ public class PlayerManager : MonoBehaviour
 
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
+        
 
         if (change != Vector3.zero && enableHorizontalMove)
         {
