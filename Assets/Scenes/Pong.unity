@@ -422,7 +422,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 594184274}
-  speed: 2
+  Xspeed: 10
+  Yspeed: 10
+  randomizeSpeed: 0
+  lower_random_speed_limit: 2
+  uppwer_random_speed_limit: 10
 --- !u!1 &872225183
 GameObject:
   m_ObjectHideFlags: 0
