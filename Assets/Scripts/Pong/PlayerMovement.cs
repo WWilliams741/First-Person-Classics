@@ -15,9 +15,6 @@ public class PlayerMovement : MonoBehaviour
     //private string prevScene;
     bool created;
 
-    [SerializeField] private float maxY;
-    [SerializeField] private float minY;
-
     void Awake()
     {
         if (!created)
@@ -46,28 +43,13 @@ public class PlayerMovement : MonoBehaviour
         //we don't want any form of acceleration so we use getaxisraw
         change.y = Input.GetAxisRaw("Vertical");
 
-        float currentY = myRigidbody.position.y;
-
-
-        if (change != Vector3.zero && currentY < maxY && change.y > 0)
-        {
-            MoveCharacter(change);
-        }
-        else if (change != Vector3.zero && currentY > minY && change.y < 0)
-        {
-            MoveCharacter(change);
-        }
-        else
-        {
-            return;
-        }
+        MoveCharacter(change);
 
     }
 
     void MoveCharacter(Vector3 direction)
     {
-        //my position + (change*speed*timechagne)
-        myRigidbody.MovePosition(transform.position + change * speed * Time.deltaTime);
+        myRigidbody.velocity = (change * speed * Time.deltaTime);
     }
 
 }
