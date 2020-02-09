@@ -85,11 +85,20 @@ public class Enemy_AI : MonoBehaviour
 
     IEnumerator addPrecision(float rate)
     {
-        yield return new WaitForSecondsRealtime(5);
-        float tempSpeed = speed + rate;
-        if(tempSpeed < maxSpeed)
+        while (true)
         {
-            speed += rate;
+            yield return new WaitForSecondsRealtime(5);
+            float tempSpeed = speed + rate;
+            if (tempSpeed < maxSpeed)
+            {
+                Debug.Log("Adding speed to the enemy paddle.");
+                speed = tempSpeed;
+            }
+            else
+            {
+                Debug.Log("Stopping coroutine to add speed, maximum has been reached");
+                yield break;
+            }
         }
     }
 }
