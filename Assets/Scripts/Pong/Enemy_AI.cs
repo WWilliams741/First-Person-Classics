@@ -11,6 +11,7 @@ public class Enemy_AI : MonoBehaviour
     [SerializeField] float speed;
 
     float yOfSatisfaction;
+    float maxSpeed;
 
     enum Difficulty
     {
@@ -28,14 +29,17 @@ public class Enemy_AI : MonoBehaviour
 
         if (difficulty.Equals(Difficulty.easy))
         {
+            maxSpeed = 5f;
             StartCoroutine(addPrecision(1f));
         }
         else if (difficulty.Equals(Difficulty.medium))
         {
+            maxSpeed = 7f;
             StartCoroutine(addPrecision(2f));
         }
         else if (difficulty.Equals(Difficulty.hard))
         {
+            maxSpeed = 9f;
             StartCoroutine(addPrecision(3f));
         }
         else
@@ -82,6 +86,10 @@ public class Enemy_AI : MonoBehaviour
     IEnumerator addPrecision(float rate)
     {
         yield return new WaitForSecondsRealtime(5);
-        speed += rate;
+        float tempSpeed = speed + rate;
+        if(tempSpeed < maxSpeed)
+        {
+            speed += rate;
+        }
     }
 }
