@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour {
     public int playerScore = 0;
+    public TextMeshProUGUI PlayerScoreText;
     public int enemyScore = 0;
+    public TextMeshProUGUI EnemyScoreText;
     [SerializeField] private GameObject pongBall;
     [SerializeField] private PongBallMovement pongBallScript;
     private bool started = false;
@@ -35,11 +39,13 @@ public class GameManager : MonoBehaviour {
     }
     public void updatePlayerScore() {
         playerScore += 1;
+        PlayerScoreText.text = playerScore.ToString();
         Debug.Log(playerScore);
     }
 
     public void updateEnemyScore() {
         enemyScore += 1;
+        EnemyScoreText.text = EnemyScoreText.ToString();
         Debug.Log(enemyScore);
     }
 
