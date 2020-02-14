@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public int playerScore = 0;
@@ -12,9 +13,10 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject pongBall;
     [SerializeField] private PongBallMovement pongBallScript;
     private bool started = false;
+    [SerializeField] private GameObject PauseMenuUI;
 
     // Start is called before the first frame update
-    void Start()
+    void Start() 
     {
         
     }
@@ -24,7 +26,17 @@ public class GameManager : MonoBehaviour {
         if (!pongBall.activeSelf & !started) {
             StartCoroutine(SpawnBall());
         }
-        
+
+        if (Input.GetKey(KeyCode.Escape) && PauseMenuUI.activeSelf ) {
+            PauseMenuUI.SetActive(true);
+            pongBallScript.Pause();
+        }
+
+        if (Input.GetKey(KeyCode.Escape) && !PauseMenuUI.activeSelf) {
+            PauseMenuUI.SetActive(false);
+            pongBallScript.Unpause();
+        }
+
     }
 
     IEnumerator SpawnBall() {
@@ -48,6 +60,23 @@ public class GameManager : MonoBehaviour {
         EnemyScoreText.text = EnemyScoreText.ToString();
         Debug.Log(enemyScore);
     }
+
+    public void MainMenu(string a) {
+        Debug.Log(a);
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void QuitGame(string a) {
+        Debug.Log("Quit Game Button Clicked");
+     #if UNITY_EDITOR
+        // Application.Quit() does not work in the editor so
+        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
+         Application.Quit();
+    #endif
+    }
+
 
 
 }
