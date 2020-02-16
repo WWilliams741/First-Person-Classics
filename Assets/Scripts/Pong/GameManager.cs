@@ -27,12 +27,13 @@ public class GameManager : MonoBehaviour {
             StartCoroutine(SpawnBall());
         }
 
-        if (Input.GetKey(KeyCode.Escape) && PauseMenuUI.activeSelf ) {
+        if (Input.GetKeyDown(KeyCode.Escape) && !PauseMenuUI.activeSelf) {
+            Debug.Log("Pausing the game");
             PauseMenuUI.SetActive(true);
             pongBallScript.Pause();
         }
-
-        if (Input.GetKey(KeyCode.Escape) && !PauseMenuUI.activeSelf) {
+        else if (Input.GetKeyDown(KeyCode.Escape) && PauseMenuUI.activeSelf) {
+            Debug.Log("Un-pausing the game");
             PauseMenuUI.SetActive(false);
             pongBallScript.Unpause();
         }
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour {
 
     public void updateEnemyScore() {
         enemyScore += 1;
-        EnemyScoreText.text = EnemyScoreText.ToString();
+        EnemyScoreText.text = enemyScore.ToString();
         Debug.Log(enemyScore);
     }
 

@@ -2683,6 +2683,7 @@ MonoBehaviour:
   speed: 1000
   myRigidbody: {fileID: 1709820203}
   player: {fileID: 1709820197}
+  PauseMenuUI: {fileID: 16572610}
 --- !u!54 &1709820203
 Rigidbody:
   m_ObjectHideFlags: 0

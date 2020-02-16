@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject player;
     //private string prevScene;
     bool created;
+    [SerializeField] private GameObject PauseMenuUI;
 
     [SerializeField] private bool enableHorizontalMove;
 
@@ -43,9 +44,11 @@ public class PlayerManager : MonoBehaviour
         change = Vector3.zero;
         //we don't want any form of acceleration so we use getaxisraw
 
-        change.x = Input.GetAxisRaw("Horizontal");
-        change.y = Input.GetAxisRaw("Vertical");
-        
+        if(!PauseMenuUI.activeSelf)
+        {
+            change.x = Input.GetAxisRaw("Horizontal");
+            change.y = Input.GetAxisRaw("Vertical");
+        }
 
         if (change != Vector3.zero && enableHorizontalMove)
         {

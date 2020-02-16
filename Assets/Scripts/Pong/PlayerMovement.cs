@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     //private string prevScene;
     bool created;
 
+    [SerializeField] private GameObject PauseMenuUI;
+
     void Awake()
     {
         if (!created)
@@ -40,9 +42,12 @@ public class PlayerMovement : MonoBehaviour
         //every frame, reset how much player has changed
         change = Vector3.zero;
 
-        //we don't want any form of acceleration so we use getaxisraw
-        change.y = Input.GetAxisRaw("Vertical");
-
+        if (!PauseMenuUI.activeSelf)
+        {
+            //we don't want any form of acceleration so we use getaxisraw
+            change.y = Input.GetAxisRaw("Vertical");
+        }
+       
         MoveCharacter(change);
 
     }
