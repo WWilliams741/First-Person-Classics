@@ -1177,7 +1177,7 @@ Transform:
   - {fileID: 4062929291314598}
   - {fileID: 4868151699234626}
   m_Father: {fileID: 4555767340937454}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1187272884541222
 GameObject:
@@ -2678,6 +2678,7 @@ Transform:
   m_LocalPosition: {x: 2.790316e-10, y: 0.019996103, z: 0.15321714}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4580454697332873637}
   - {fileID: 4919947707067954}
   - {fileID: 4245425517877602}
   m_Father: {fileID: 4790641894364010}
@@ -3472,7 +3473,7 @@ Transform:
   - {fileID: 4995523317753526}
   - {fileID: 4046283105589378}
   m_Father: {fileID: 4555767340937454}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1643471352299654
 GameObject:
@@ -3532,7 +3533,7 @@ Transform:
   m_GameObject: {fileID: 1644373995442134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children:
   - {fileID: 4580454697332873637}
   - {fileID: 4384707507501342}
@@ -5296,11 +5297,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6124716433681739855}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.997879, y: -0.00000000956785, z: -0.00000012074301, w: -0.06509618}
+  m_LocalPosition: {x: -0.0123, y: 0.0254, z: -0.1575}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4691832418928178}
+  m_Father: {fileID: 4555767340937454}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5076673870755098101
@@ -5325,9 +5326,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 1
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -5366,10 +5367,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axes: 0
-  sensitivityX: 15
-  sensitivityY: 15
-  minimumX: -360
-  maximumX: 360
-  minimumY: -60
-  maximumY: 60
+  sensitivityX: 3
+  sensitivityY: 3
+  minimumX: -60
+  maximumX: 60
+  minimumY: -30
+  maximumY: 30
   frameCounter: 2
