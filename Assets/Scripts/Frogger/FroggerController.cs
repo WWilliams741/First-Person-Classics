@@ -8,7 +8,7 @@ public class FroggerController : MonoBehaviour
     public GameObject frog;
     public GameObject frogsBody;
     [SerializeField] SkinnedMeshRenderer skinnedMeshRenderer;
-
+    [SerializeField] Camera eyes;
     [SerializeField] Animator anim;
 
     //public GameObject guts;
@@ -112,7 +112,7 @@ public class FroggerController : MonoBehaviour
     {
         if (anim.applyRootMotion)
         {
-            anim.applyRootMotion = true;
+            anim.applyRootMotion = false;
         }
     }
 
