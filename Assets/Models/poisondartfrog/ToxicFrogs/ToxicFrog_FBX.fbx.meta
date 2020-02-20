@@ -498,7 +498,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves:
-      - name: Curve
+      - name: Jump Speed
         curve:
           serializedVersion: 2
           curve:
@@ -522,7 +522,7 @@ ModelImporter:
             outWeight: 0
           - serializedVersion: 3
             time: 0.32217306
-            value: 0
+            value: 11.32
             inSlope: 0
             outSlope: 0
             tangentMode: 0

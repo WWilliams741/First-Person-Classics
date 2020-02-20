@@ -7,7 +7,6 @@ public class FroggerController : MonoBehaviour
 
     public GameObject frog;
     public GameObject frogsBody;
-    [SerializeField] SkinnedMeshRenderer skinnedMeshRenderer;
     [SerializeField] Camera eyes;
     [SerializeField] Animator anim;
 
@@ -33,25 +32,42 @@ public class FroggerController : MonoBehaviour
     {
         float forward = Input.GetAxisRaw("Vertical");
         float side = Input.GetAxisRaw("Horizontal");
-        if (forward > 0)
+        if (Input.GetKeyDown(KeyCode.W))
         {
             Debug.Log("Frog is about to move forward");
             Jump();
         }
-        else if (side > 0)
+        else if (Input.GetKeyDown(KeyCode.D))
         {
             Debug.Log("Frog is about to move right");
             TurnRight();
+            //Idle();
         }
-        else if (side < 0)
+        else if (Input.GetKeyDown(KeyCode.A))
         {
             Debug.Log("Frog is about to move left");
             TurnLeft();
+            //Idle();
+        }
+        else
+        {
+            Idle();
         }
         
     }
 
-    public void Idle()
+    void OnAnimatorMove()
+    {
+
+        if (anim)
+        {
+            Vector3 newPosition = transform.position;
+            newPosition.z += anim.GetFloat("Jump Speed") * Time.deltaTime;
+            transform.position = newPosition;
+        }
+    }
+
+        public void Idle()
     {
         RootMotion();
         //DestroyGuts();
@@ -110,9 +126,9 @@ public class FroggerController : MonoBehaviour
 
     void RootMotion()
     {
-        if (anim.applyRootMotion)
+        if (!anim.applyRootMotion)
         {
-            anim.applyRootMotion = false;
+            anim.applyRootMotion = true;
         }
     }
 

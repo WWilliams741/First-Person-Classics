@@ -311,7 +311,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4691832418928178}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &137985880763170556
 SkinnedMeshRenderer:
@@ -767,7 +767,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4691832418928178}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &137164022910920300
 SkinnedMeshRenderer:
@@ -1829,7 +1829,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4691832418928178}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &137724355431998534
 SkinnedMeshRenderer:
@@ -2130,7 +2130,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4691832418928178}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &137044081562237050
 SkinnedMeshRenderer:
@@ -2466,7 +2466,7 @@ Transform:
   - {fileID: 4555767340937454}
   - {fileID: 4705343745679526}
   m_Father: {fileID: 4691832418928178}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1413240695724020
 GameObject:
@@ -3516,7 +3516,7 @@ GameObject:
   - component: {fileID: 4691832418928178}
   - component: {fileID: 95172607052263456}
   - component: {fileID: 136685980256629510}
-  - component: {fileID: 1635584977}
+  - component: {fileID: 8569592709352421845}
   m_Layer: 0
   m_Name: ToxicFrog
   m_TagString: Untagged
@@ -3535,7 +3535,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children:
-  - {fileID: 4580454697332873637}
   - {fileID: 4384707507501342}
   - {fileID: 4928595107948892}
   - {fileID: 4342929553290982}
@@ -3577,7 +3576,7 @@ CapsuleCollider:
   m_Height: 0.28
   m_Direction: 2
   m_Center: {x: 0, y: 0.07, z: 0}
---- !u!114 &1635584977
+--- !u!114 &8569592709352421845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3586,18 +3585,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1644373995442134}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed1a9b8583901482d9890a401a5be5b7, type: 3}
+  m_Script: {fileID: 11500000, guid: d535f6013fe956549bc99ea1955fb0b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   frog: {fileID: 1644373995442134}
   frogsBody: {fileID: 1348389935115422}
-  blue: {fileID: 2100000, guid: cca42b20867c44ba8981cb8c0958b1d1, type: 2}
-  balckOnRedSpot: {fileID: 2100000, guid: 8a4d341f618654371ad279350d04e49d, type: 2}
-  orangeBlackBlue: {fileID: 2100000, guid: 82258f0e08d574b24b1c786640fdae45, type: 2}
-  redGreenBlack: {fileID: 2100000, guid: a6966664c834d410daa31bc4ea1863a6, type: 2}
-  yellow: {fileID: 2100000, guid: a3b2303950a624313b019c4834557628, type: 2}
-  yellowOnBlack: {fileID: 2100000, guid: 989ddabccad084bdb8cc0c19d680b330, type: 2}
-  guts: {fileID: 1387908168178666, guid: b0dea9a92e04b412daeb449ac74853bd, type: 3}
+  eyes: {fileID: 5076673870755098101}
+  anim: {fileID: 95172607052263456}
 --- !u!1 &1651717217587476
 GameObject:
   m_ObjectHideFlags: 0
