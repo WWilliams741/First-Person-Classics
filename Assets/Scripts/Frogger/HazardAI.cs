@@ -29,10 +29,10 @@ public class HazardAI : MonoBehaviour {
     private void OnTriggerEnter(Collider Collider) {
         Debug.Log(Collider.gameObject.name);
         if (Collider.gameObject.name == "leftCollision" && Direction == -1) {
-            trans.position = new Vector3(resetLocation.position.x , resetLocation.position.y, trans.position.z);
+            trans.position = new Vector3(resetLocation.position.x , trans.position.y, trans.position.z);
         }
         else if (Collider.gameObject.name == "rightCollision" && Direction == 1) {
-            trans.position = new Vector3(resetLocation.position.x, resetLocation.position.y, trans.position.z);
+            trans.position = new Vector3(resetLocation.position.x, trans.position.y, trans.position.z);
         }
 
 

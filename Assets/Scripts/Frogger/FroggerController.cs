@@ -8,7 +8,9 @@ public class FroggerController : MonoBehaviour
     public GameObject frog;
     public GameObject frogsBody;
     [SerializeField] Camera eyes;
+    [SerializeField] Transform trans;
     [SerializeField] Animator anim;
+    private Vector3 StartLocation;
 
     //public GameObject guts;
     //[SerializeField] GameObject gutsEx;
@@ -26,6 +28,7 @@ public class FroggerController : MonoBehaviour
     void Start()
     {
         direction = Direction.up;
+        StartLocation = new Vector3(trans.position.x, trans.position.y, trans.position.z );
     }
 
     void Update()
@@ -130,6 +133,15 @@ public class FroggerController : MonoBehaviour
         {
             anim.applyRootMotion = true;
         }
+    }
+
+    private void OnTriggerEnter(Collider Collider) {
+        //Debug.Log(Collider.gameObject.name);
+        if (Collider.gameObject.layer == 10) {
+            trans.position = StartLocation;
+            Debug.Log("Hit by car");
+        }
+
     }
 
 }
