@@ -16,10 +16,10 @@ TagManager:
   - 
   - PostProcessing
   - Player
-  - Hazard
+  - Car
   - Walls
-  - HazardReset
-  - 
+  - CarReset
+  - WaterHazard
   - 
   - 
   - 
