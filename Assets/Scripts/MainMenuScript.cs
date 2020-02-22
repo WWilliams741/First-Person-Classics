@@ -4,6 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour {
+
+    [SerializeField]
+    private float stuff;
+    private float morestuff;
+    private float evenmorestuff;
+    [SerializeField]
+
     // Start is called before the first frame update
     void Start()    {
         

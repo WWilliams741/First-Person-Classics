@@ -15,26 +15,25 @@ public class FroggerController : MonoBehaviour
     //public GameObject guts;
     //[SerializeField] GameObject gutsEx;
     bool smashed = false;
+    int turnCounter;
     Direction direction;
 
     enum Direction
     {
-        left,
-        right,
-        up,
-        down
+        north,
+        east,
+        south,
+        west
     }
 
     void Start()
     {
-        direction = Direction.up;
+        direction = Direction.north;
         StartLocation = new Vector3(trans.position.x, trans.position.y, trans.position.z );
     }
 
     void Update()
     {
-        float forward = Input.GetAxisRaw("Vertical");
-        float side = Input.GetAxisRaw("Horizontal");
         if (Input.GetKeyDown(KeyCode.W))
         {
             Debug.Log("Frog is about to move forward");
@@ -64,9 +63,38 @@ public class FroggerController : MonoBehaviour
 
         if (anim)
         {
-            Vector3 newPosition = transform.position;
-            newPosition.z += anim.GetFloat("Jump Speed") * Time.deltaTime;
-            transform.position = newPosition;
+            if (direction == Direction.north)
+            {
+                Vector3 newPosition = transform.position;
+                newPosition.z += anim.GetFloat("Jump Speed") * Time.deltaTime;
+                transform.position = newPosition;
+            }
+            else if (direction == Direction.east)
+            {
+                Vector3 newPosition = transform.position;
+                newPosition.x += anim.GetFloat("Jump Speed") * Time.deltaTime;
+                transform.position = newPosition;
+            }
+            else if (direction == Direction.south)
+            {
+                Vector3 newPosition = transform.position;
+                newPosition.z -= anim.GetFloat("Jump Speed") * Time.deltaTime;
+                transform.position = newPosition;
+            }
+            else if (direction == Direction.west)
+            {
+                Vector3 newPosition = transform.position;
+                newPosition.x -= anim.GetFloat("Jump Speed") * Time.deltaTime;
+                transform.position = newPosition;
+            }
+            else
+            {
+                Debug.Log("A terrible error has occured and we are facing the void, somehow!");
+            }
+
+            Vector3 newRotation = transform.rotation.eulerAngles;
+            newRotation.y += anim.GetFloat("Turn Speed") * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(newRotation);
         }
     }
 
@@ -117,6 +145,9 @@ public class FroggerController : MonoBehaviour
     {
         //anim.applyRootMotion = true;
         //DestroyGuts();
+        turnCounter = (turnCounter + 3) % 4;
+        direction = (Direction) turnCounter;
+        Debug.Log("frog is now facing " + direction);
         anim.SetTrigger("TurnLeft");
     }
 
@@ -124,6 +155,9 @@ public class FroggerController : MonoBehaviour
     {
         //anim.applyRootMotion = true;
         //DestroyGuts();
+        turnCounter = (turnCounter + 1) % 4;
+        direction = (Direction)turnCounter;
+        Debug.Log("frog is now facing " + direction);
         anim.SetTrigger("TurnRight");
     }
 
