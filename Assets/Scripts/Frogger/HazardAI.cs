@@ -27,11 +27,13 @@ public class HazardAI : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider Collider) {
-        Debug.Log(Collider.gameObject.name);
+        //Debug.Log(Collider.gameObject.name);
         if (Collider.gameObject.name == "leftCollision" && Direction == -1) {
+            Debug.Log("Hitting the left wall");
             trans.position = new Vector3(resetLocation.position.x , trans.position.y, trans.position.z);
         }
         else if (Collider.gameObject.name == "rightCollision" && Direction == 1) {
+            Debug.Log("Hitting the right wall");
             trans.position = new Vector3(resetLocation.position.x, trans.position.y, trans.position.z);
         }
 
