@@ -11,10 +11,12 @@ public class FroggerController : MonoBehaviour
     [SerializeField] Transform trans;
     [SerializeField] Animator anim;
     private Vector3 StartLocation;
+    private Transform turtleOrLogPosition;
 
     //public GameObject guts;
     //[SerializeField] GameObject gutsEx;
-    bool smashed = false;
+    bool smashed;
+    bool onTurtleOrLog;
     int turnCounter;
     Direction direction;
 
@@ -28,6 +30,8 @@ public class FroggerController : MonoBehaviour
 
     void Start()
     {
+        smashed = false;
+        onTurtleOrLog = false;
         direction = Direction.north;
         StartLocation = new Vector3(trans.position.x, trans.position.y, trans.position.z );
     }
@@ -55,7 +59,13 @@ public class FroggerController : MonoBehaviour
         {
             Idle();
         }
-        
+
+        if(onTurtleOrLog)
+        {
+            Debug.Log("Following turtle or log now.");
+            followTurtleOrLog();
+        }
+
     }
 
     void OnAnimatorMove()
@@ -109,7 +119,27 @@ public class FroggerController : MonoBehaviour
     {
         RootMotion();
         //DestroyGuts();
+        if(!onTurtleOrLog)
+        {
+            transform.position = new Vector3(trans.position.x, trans.position.y + 0.6f, trans.position.z);
+        }
+        else
+        {
+            onTurtleOrLog = false;
+        }
         anim.SetTrigger("Jump");
+    }
+
+    public void finishJump(float value)
+    {
+        if(onTurtleOrLog)
+        {
+            transform.position = new Vector3(turtleOrLogPosition.position.x, trans.position.y, turtleOrLogPosition.position.z);
+        }
+        else
+        {
+            transform.position = new Vector3(trans.position.x, trans.position.y + value, trans.position.z);
+        }
     }
 
     public void Crawl()
@@ -169,13 +199,29 @@ public class FroggerController : MonoBehaviour
         }
     }
 
+    private void followTurtleOrLog()
+    {
+        transform.position = new Vector3(turtleOrLogPosition.position.x, trans.position.y, turtleOrLogPosition.position.z);
+    }
+
     private void OnTriggerEnter(Collider Collider) {
         //Debug.Log(Collider.gameObject.name);
-        if (Collider.gameObject.layer == 10) {
+        if (Collider.gameObject.layer == 10)
+        {
             trans.position = StartLocation;
             Debug.Log("Hit by car");
         }
-
+        else if (Collider.gameObject.layer == 13)
+        {
+            trans.position = StartLocation;
+            Debug.Log("Fell into the water");
+        }
+        else if (Collider.gameObject.layer == 14)
+        {
+            onTurtleOrLog = true;
+            turtleOrLogPosition = Collider.gameObject.transform;
+            Debug.Log("Going on top of a turtle/log");
+        }
     }
 
 }
