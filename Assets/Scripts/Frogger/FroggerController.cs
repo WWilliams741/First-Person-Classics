@@ -222,38 +222,6 @@ public class FroggerController : MonoBehaviour
             turtleOrLogPosition = Collider.gameObject.transform;
             Debug.Log("Going on top of a turtle/log");
         }
-        else if (Collider.gameObject.layer == 15)
-        {
-            //add score - possibly tell gameManager:
-
-            Collider.gameObject.SetActive(false);
-            //change gameobject to a goalFrog:
-            if (gameObject.name.EndsWith("1"))
-            {
-                
-            }
-            else if (gameObject.name.EndsWith("2"))
-            {
-
-            }
-            else if (gameObject.name.EndsWith("3"))
-            {
-                
-            }
-            else if (gameObject.name.EndsWith("4"))
-            {
-                
-            }
-            else if (gameObject.name.EndsWith("5"))
-            {
-                
-            }
-            else
-            {
-                Debug.Log("You have entered the void, and are enabling/disabling some strange things my dude.");
-            }
-            Debug.Log("We reached a butterfly, GOAL!!!!!");
-        }
     }
 
 }
