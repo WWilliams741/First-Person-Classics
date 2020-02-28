@@ -16,6 +16,7 @@ public class FroggerController : MonoBehaviour
     //public GameObject guts;
     //[SerializeField] GameObject gutsEx;
     bool smashed;
+    bool moving;
     bool onTurtleOrLog;
     int turnCounter;
     Direction direction;
@@ -31,6 +32,7 @@ public class FroggerController : MonoBehaviour
     void Start()
     {
         smashed = false;
+        moving = false;
         onTurtleOrLog = false;
         direction = Direction.north;
         StartLocation = new Vector3(trans.position.x, trans.position.y, trans.position.z );
@@ -38,18 +40,18 @@ public class FroggerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && !moving)
         {
             Debug.Log("Frog is about to move forward");
             Jump();
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.D) && !moving)
         {
             Debug.Log("Frog is about to move right");
             TurnRight();
             //Idle();
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A) && !moving)
         {
             Debug.Log("Frog is about to move left");
             TurnLeft();
@@ -128,6 +130,7 @@ public class FroggerController : MonoBehaviour
             onTurtleOrLog = false;
         }
         anim.SetTrigger("Jump");
+        moving = true;
     }
 
     public void finishJump(float value)
@@ -140,6 +143,7 @@ public class FroggerController : MonoBehaviour
         {
             transform.position = new Vector3(trans.position.x, trans.position.y + value, trans.position.z);
         }
+        moving = false;
     }
 
     public void Crawl()
@@ -179,6 +183,7 @@ public class FroggerController : MonoBehaviour
         direction = (Direction) turnCounter;
         Debug.Log("frog is now facing " + direction);
         anim.SetTrigger("TurnLeft");
+        moving = true;
     }
 
     public void TurnRight()
@@ -189,6 +194,7 @@ public class FroggerController : MonoBehaviour
         direction = (Direction)turnCounter;
         Debug.Log("frog is now facing " + direction);
         anim.SetTrigger("TurnRight");
+        moving = true;
     }
 
     void RootMotion()
@@ -202,6 +208,11 @@ public class FroggerController : MonoBehaviour
     private void followTurtleOrLog()
     {
         transform.position = new Vector3(turtleOrLogPosition.position.x, trans.position.y, turtleOrLogPosition.position.z);
+    }
+
+    public void canMove()
+    {
+        moving = false;
     }
 
     private void OnTriggerEnter(Collider Collider) {
