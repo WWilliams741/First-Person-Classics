@@ -10,7 +10,7 @@ public class PongBallMovement : MonoBehaviour
     [SerializeField] float Xspeed;
     [SerializeField] float Yspeed;
 
-    [SerializeField] GameManager gameManager;
+    [SerializeField] GameManagerScript_Pong gameManager;
 
 
     [SerializeField] bool randomizeSpeed;

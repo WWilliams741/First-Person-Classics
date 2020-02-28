@@ -6,6 +6,7 @@ public class GoalControl : MonoBehaviour
 {
 
     [SerializeField] GameObject goalFrog;
+    [SerializeField] GameManagerScript_Frogger gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -27,14 +28,16 @@ public class GoalControl : MonoBehaviour
         if (Collider.gameObject.layer == 9)
         {
             Debug.Log("Frog has touched me.");
+            //Enable goalFrog:
+            goalFrog.SetActive(true);
+
+            //Disable butterfly:
+            this.gameObject.SetActive(false);
+            gameManager.updatePlayerScore();
         }
 
 
-        //Enable goalFrog:
-        goalFrog.SetActive(true);
-
-        //Disable butterfly:
-        this.gameObject.SetActive(false);
+        
 
     }
 }
