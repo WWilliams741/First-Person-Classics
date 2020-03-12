@@ -233,6 +233,11 @@ public class FroggerController : MonoBehaviour
             turtleOrLogPosition = Collider.gameObject.transform;
             Debug.Log("Going on top of a turtle/log");
         }
+        else if (Collider.gameObject.layer == 15) {
+            
+            trans.position = StartLocation;
+            Debug.Log("Touched a butterfly");
+        }
     }
 
 }
