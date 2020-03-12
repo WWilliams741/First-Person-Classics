@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HazardAI : MonoBehaviour {
     
-    [SerializeField]private bool IsTurtle;
+    [SerializeField]private bool IsUnderWaterTurtle;
     [SerializeField] private int Speed;
     //positive or negative 1 to denote direction 
     [SerializeField] private int Direction;
@@ -13,17 +13,22 @@ public class HazardAI : MonoBehaviour {
     [SerializeField] private Transform trans;
 
 
-
+    bool underwater;
 
     // Start is called before the first frame update
     void Start()    {
         RB.velocity = Vector3.right * Speed * Direction;
+        underwater = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (IsUnderWaterTurtle && !underwater)
+        {
+            underwater = true;
+            StartCoroutine(alternateUnderWater());
+        }
     }
 
     private void OnTriggerEnter(Collider Collider) {
@@ -40,5 +45,30 @@ public class HazardAI : MonoBehaviour {
 
     }
 
+    IEnumerator alternateUnderWater()
+    {
 
+        while(true)
+        {
+            Debug.Log("moving the turtle underwater");
+            RB.velocity += Vector3.down;
+            yield return new WaitForSecondsRealtime(3.25f);
+
+            Debug.Log("moving the turtle above water");
+            RB.velocity += Vector3.up * 2;
+
+            yield return new WaitForSecondsRealtime(3f);
+
+            StartCoroutine(waitForCycle());
+
+            yield break;
+        }
+    }
+
+    IEnumerator waitForCycle()
+    {
+        RB.velocity += Vector3.down;
+        yield return new WaitForSeconds(5);
+        underwater = false;
+    }
 }
