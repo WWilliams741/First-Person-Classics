@@ -14,11 +14,13 @@ public class HazardAI : MonoBehaviour {
 
 
     bool underwater;
+    float startY;
 
     // Start is called before the first frame update
     void Start()    {
         RB.velocity = Vector3.right * Speed * Direction;
         underwater = false;
+        startY = RB.position.y;
     }
 
     // Update is called once per frame
@@ -52,7 +54,7 @@ public class HazardAI : MonoBehaviour {
         {
             Debug.Log("moving the turtle underwater");
             RB.velocity += Vector3.down;
-            yield return new WaitForSecondsRealtime(3.25f);
+            yield return new WaitForSecondsRealtime(3.15f);
 
             Debug.Log("moving the turtle above water");
             RB.velocity += Vector3.up * 2;
@@ -69,6 +71,7 @@ public class HazardAI : MonoBehaviour {
     {
         RB.velocity += Vector3.down;
         yield return new WaitForSeconds(5);
+        RB.position = new Vector3(RB.position.x, startY, RB.position.z);
         underwater = false;
     }
 }
