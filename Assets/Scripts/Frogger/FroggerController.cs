@@ -11,13 +11,14 @@ public class FroggerController : MonoBehaviour
     [SerializeField] Transform trans;
     [SerializeField] Animator anim;
     private Vector3 StartLocation;
-    private Transform turtleOrLogPosition;
+    private GameObject turtleOrLog;
 
     //public GameObject guts;
     //[SerializeField] GameObject gutsEx;
     bool smashed;
     bool moving;
     bool onTurtleOrLog;
+    bool isUnderWaterTurtle;
     int turnCounter;
     Direction direction;
 
@@ -35,7 +36,7 @@ public class FroggerController : MonoBehaviour
         moving = false;
         onTurtleOrLog = false;
         direction = Direction.north;
-        StartLocation = new Vector3(trans.position.x, trans.position.y, trans.position.z );
+        StartLocation = trans.position;
     }
 
     void Update()
@@ -137,7 +138,7 @@ public class FroggerController : MonoBehaviour
     {
         if(onTurtleOrLog)
         {
-            transform.position = new Vector3(turtleOrLogPosition.position.x, trans.position.y, turtleOrLogPosition.position.z);
+            transform.position = new Vector3(turtleOrLog.transform.position.x, trans.position.y, turtleOrLog.transform.position.z);
         }
         else
         {
@@ -207,7 +208,22 @@ public class FroggerController : MonoBehaviour
 
     private void followTurtleOrLog()
     {
-        transform.position = new Vector3(turtleOrLogPosition.position.x, trans.position.y, turtleOrLogPosition.position.z);
+        if(isUnderWaterTurtle)
+        {
+            if(turtleOrLog.transform.position.y < -2.0f)
+            {
+                onTurtleOrLog = false;
+                transform.position = new Vector3(transform.position.x, trans.position.y - 0.6f, transform.position.z);
+            }
+            else
+            {
+                transform.position = new Vector3(turtleOrLog.transform.position.x, trans.position.y, turtleOrLog.transform.position.z);
+            }
+        }
+        else
+        {
+            transform.position = new Vector3(turtleOrLog.transform.position.x, trans.position.y, turtleOrLog.transform.position.z);
+        }
     }
 
     public void canMove()
@@ -230,7 +246,8 @@ public class FroggerController : MonoBehaviour
         else if (Collider.gameObject.layer == 14)
         {
             onTurtleOrLog = true;
-            turtleOrLogPosition = Collider.gameObject.transform;
+            turtleOrLog = Collider.gameObject;
+            isUnderWaterTurtle = turtleOrLog.GetComponent<HazardAI>().IsUnderWaterTurtle;
             Debug.Log("Going on top of a turtle/log");
         }
         else if (Collider.gameObject.layer == 15) {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HazardAI : MonoBehaviour {
     
-    [SerializeField]private bool IsUnderWaterTurtle;
+    public bool IsUnderWaterTurtle;
     [SerializeField] private int Speed;
     //positive or negative 1 to denote direction 
     [SerializeField] private int Direction;
