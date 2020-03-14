@@ -12,6 +12,7 @@ public class FroggerController : MonoBehaviour
     [SerializeField] Animator anim;
     private Vector3 StartLocation;
     private GameObject turtleOrLog;
+    [SerializeField] GameManagerScript_Frogger gameController;
 
     //public GameObject guts;
     //[SerializeField] GameObject gutsEx;
@@ -235,12 +236,12 @@ public class FroggerController : MonoBehaviour
         //Debug.Log(Collider.gameObject.name);
         if (Collider.gameObject.layer == 10)
         {
-            trans.position = StartLocation;
+            death();
             Debug.Log("Hit by car");
         }
         else if (Collider.gameObject.layer == 13)
         {
-            trans.position = StartLocation;
+            death();
             Debug.Log("Fell into the water");
         }
         else if (Collider.gameObject.layer == 14)
@@ -251,10 +252,17 @@ public class FroggerController : MonoBehaviour
             Debug.Log("Going on top of a turtle/log");
         }
         else if (Collider.gameObject.layer == 15) {
-            
-            trans.position = StartLocation;
+            death();            
             Debug.Log("Touched a butterfly");
         }
+    }
+
+    public void death() {
+        //check lives, if 0 on death game over otherwise remove life and reset to start.
+        trans.position = StartLocation;
+        gameController.restartTimer();        
+       
+
     }
 
 }
