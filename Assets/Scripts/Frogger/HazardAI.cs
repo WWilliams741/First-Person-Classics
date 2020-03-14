@@ -18,7 +18,7 @@ public class HazardAI : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start()    {
-        RB.velocity = Vector3.right * Speed * Direction;
+        RB.velocity = Vector3.right * Speed * Direction ;
         underwater = false;
         startY = RB.position.y;
     }

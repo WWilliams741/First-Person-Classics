@@ -10,18 +10,21 @@ public class GameManagerScript_Frogger : MonoBehaviour
     public TextMeshProUGUI PlayerScoreText;
     
     [SerializeField] private GameObject PauseMenuUI;
+    [SerializeField] private GameObject LoseMenuUI;
     [SerializeField] private GameObject Life1;
     [SerializeField] private GameObject Life2;
     [SerializeField] private RectTransform Timer;
     [SerializeField] FroggerController froggerController;
     public bool paused = false;
     public float timerTotal;
+    public int ExtraLives;
 
     // Start is called before the first frame update
     void Start()    {
         timerTotal = Timer.rect.width;
         Debug.Log(timerTotal);
         StartCoroutine(startTimer());
+        ExtraLives = 2;
     }
 
     // Update is called once per frame
@@ -38,8 +41,16 @@ public class GameManagerScript_Frogger : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape) && PauseMenuUI.activeSelf) {
             Debug.Log("Un-pausing the game");
             PauseMenuUI.SetActive(false);
-            
+            paused = false;
         }
+        if (paused) {
+            Time.timeScale = 0;
+        }
+        else {
+            Time.timeScale = 1;
+        }
+
+
     }
 
     public void updatePlayerScore() {
@@ -65,9 +76,9 @@ public class GameManagerScript_Frogger : MonoBehaviour
          Application.Quit();
 #endif
     }
-
+    public float totalTime = 30;
     public IEnumerator startTimer() {
-        float totalTime = 30;
+        
 
         while (true) {
             yield return new WaitForSecondsRealtime(1);
@@ -88,9 +99,45 @@ public class GameManagerScript_Frogger : MonoBehaviour
     }
 
     public void restartTimer() {
-        StopCoroutine(startTimer());
-        StartCoroutine(startTimer());
+        totalTime = 31;
     }
+
+    public void LoseLife() {
+        //could be done with an array if we had more lives
+        if (ExtraLives == 2) {
+            Life2.SetActive(false);
+            ExtraLives -= 1;
+        }
+        else if (ExtraLives == 1) {
+            Life1.SetActive(false);
+            ExtraLives -= 1;
+        }
+        else if (ExtraLives == 0) {
+            paused = true;
+            LoseMenuUI.SetActive(true);
+        }
+
+    }
+
+    public void restart() {
+        /*
+        if (LoseMenuUI.activeSelf)
+            LoseMenuUI.SetActive(false);
+        if (PauseMenuUI.activeSelf)
+            PauseMenuUI.SetActive(false);           
+
+        paused = false;
+        froggerController.restart();
+        playerScore = 0;
+        PlayerScoreText.text = playerScore.ToString();
+        ExtraLives = 2;
+        Life1.SetActive(true);
+        Life2.SetActive(true);
+         */
+        SceneManager.LoadScene("Frogger");
+
+    }
+
 
 
 }

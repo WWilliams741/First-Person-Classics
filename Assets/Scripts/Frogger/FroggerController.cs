@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FroggerController : MonoBehaviour
-{
+public class FroggerController : MonoBehaviour {
 
     public GameObject frog;
     public GameObject frogsBody;
@@ -23,16 +22,14 @@ public class FroggerController : MonoBehaviour
     int turnCounter;
     Direction direction;
 
-    enum Direction
-    {
+    enum Direction {
         north,
         east,
         south,
         west
     }
 
-    void Start()
-    {
+    void Start() {
         smashed = false;
         moving = false;
         onTurtleOrLog = false;
@@ -40,69 +37,56 @@ public class FroggerController : MonoBehaviour
         StartLocation = trans.position;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.W) && !moving)
-        {
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.W) && !moving) {
             Debug.Log("Frog is about to move forward");
             Jump();
         }
-        else if (Input.GetKeyDown(KeyCode.D) && !moving)
-        {
+        else if (Input.GetKeyDown(KeyCode.D) && !moving) {
             Debug.Log("Frog is about to move right");
             TurnRight();
             //Idle();
         }
-        else if (Input.GetKeyDown(KeyCode.A) && !moving)
-        {
+        else if (Input.GetKeyDown(KeyCode.A) && !moving) {
             Debug.Log("Frog is about to move left");
             TurnLeft();
             //Idle();
         }
-        else
-        {
+        else {
             Idle();
         }
 
-        if(onTurtleOrLog)
-        {
+        if (onTurtleOrLog) {
             Debug.Log("Following turtle or log now.");
             followTurtleOrLog();
         }
 
     }
 
-    void OnAnimatorMove()
-    {
+    void OnAnimatorMove() {
 
-        if (anim)
-        {
-            if (direction == Direction.north)
-            {
+        if (anim) {
+            if (direction == Direction.north) {
                 Vector3 newPosition = transform.position;
                 newPosition.z += anim.GetFloat("Jump Speed") * Time.deltaTime;
                 transform.position = newPosition;
             }
-            else if (direction == Direction.east)
-            {
+            else if (direction == Direction.east) {
                 Vector3 newPosition = transform.position;
                 newPosition.x += anim.GetFloat("Jump Speed") * Time.deltaTime;
                 transform.position = newPosition;
             }
-            else if (direction == Direction.south)
-            {
+            else if (direction == Direction.south) {
                 Vector3 newPosition = transform.position;
                 newPosition.z -= anim.GetFloat("Jump Speed") * Time.deltaTime;
                 transform.position = newPosition;
             }
-            else if (direction == Direction.west)
-            {
+            else if (direction == Direction.west) {
                 Vector3 newPosition = transform.position;
                 newPosition.x -= anim.GetFloat("Jump Speed") * Time.deltaTime;
                 transform.position = newPosition;
             }
-            else
-            {
+            else {
                 Debug.Log("A terrible error has occured and we are facing the void, somehow!");
             }
 
@@ -112,84 +96,71 @@ public class FroggerController : MonoBehaviour
         }
     }
 
-        public void Idle()
-    {
+    public void Idle() {
         RootMotion();
         //DestroyGuts();
         anim.SetTrigger("Idle");
     }
 
-    public void Jump()
-    {
+    public void Jump() {
         RootMotion();
         //DestroyGuts();
-        if(!onTurtleOrLog)
-        {
+        if (!onTurtleOrLog) {
             transform.position = new Vector3(trans.position.x, trans.position.y + 0.6f, trans.position.z);
         }
-        else
-        {
+        else {
             onTurtleOrLog = false;
         }
         anim.SetTrigger("Jump");
         moving = true;
     }
 
-    public void finishJump(float value)
-    {
-        if(onTurtleOrLog)
-        {
+    public void finishJump(float value) {
+        if (onTurtleOrLog) {
             transform.position = new Vector3(turtleOrLog.transform.position.x, trans.position.y, turtleOrLog.transform.position.z);
         }
-        else
-        {
+        else {
             transform.position = new Vector3(trans.position.x, trans.position.y + value, trans.position.z);
         }
         moving = false;
     }
 
-    public void Crawl()
-    {
+    public void Crawl() {
         RootMotion();
         //DestroyGuts();
         anim.SetTrigger("Crawl");
     }
 
-    public void Tongue()
-    {
+    public void Tongue() {
         RootMotion();
         //DestroyGuts();
         anim.SetTrigger("Tongue");
     }
 
-    public void Swim()
-    {
+    public void Swim() {
         RootMotion();
         //DestroyGuts();
         anim.SetTrigger("Swim");
     }
 
-    public void Smashed()
-    {
+    public void Smashed() {
         RootMotion();
         //DestroyGuts();
         anim.SetTrigger("Smashed");
         //Guts();
     }
 
-    public void TurnLeft()
-    {
+    public void TurnLeft() {
         //anim.applyRootMotion = true;
         //DestroyGuts();
         turnCounter = (turnCounter + 3) % 4;
-        direction = (Direction) turnCounter;
+        direction = (Direction)turnCounter;
         Debug.Log("frog is now facing " + direction);
         anim.SetTrigger("TurnLeft");
         moving = true;
     }
 
-    public void TurnRight()
-    {
+    public void TurnRight() {
         //anim.applyRootMotion = true;
         //DestroyGuts();
         turnCounter = (turnCounter + 1) % 4;
@@ -199,70 +170,56 @@ public class FroggerController : MonoBehaviour
         moving = true;
     }
 
-    void RootMotion()
-    {
-        if (!anim.applyRootMotion)
-        {
+    void RootMotion() {
+        if (!anim.applyRootMotion) {
             anim.applyRootMotion = true;
         }
     }
 
-    private void followTurtleOrLog()
-    {
-        if(isUnderWaterTurtle)
-        {
-            if(turtleOrLog.transform.position.y < -2.0f)
-            {
+    private void followTurtleOrLog() {
+        if (isUnderWaterTurtle) {
+            if (turtleOrLog.transform.position.y < -2.0f) {
                 onTurtleOrLog = false;
                 transform.position = new Vector3(transform.position.x, trans.position.y - 0.6f, transform.position.z);
             }
-            else
-            {
+            else {
                 transform.position = new Vector3(turtleOrLog.transform.position.x, trans.position.y, turtleOrLog.transform.position.z);
             }
         }
-        else
-        {
+        else {
             transform.position = new Vector3(turtleOrLog.transform.position.x, trans.position.y, turtleOrLog.transform.position.z);
         }
     }
 
-    public void canMove()
-    {
+    public void canMove() {
         moving = false;
     }
 
     private void OnTriggerEnter(Collider Collider) {
         //Debug.Log(Collider.gameObject.name);
-        if (Collider.gameObject.layer == 10)
-        {
+        if (Collider.gameObject.layer == 10) {
             death();
             Debug.Log("Hit by car");
         }
-        else if (Collider.gameObject.layer == 13)
-        {
+        else if (Collider.gameObject.layer == 13) {
             death();
             Debug.Log("Fell into the water");
         }
-        else if (Collider.gameObject.layer == 14)
-        {
+        else if (Collider.gameObject.layer == 14) {
             onTurtleOrLog = true;
             turtleOrLog = Collider.gameObject;
             isUnderWaterTurtle = turtleOrLog.GetComponent<HazardAI>().IsUnderWaterTurtle;
             Debug.Log("Going on top of a turtle/log");
         }
         else if (Collider.gameObject.layer == 15) {
-            death();            
+            death();
             Debug.Log("Touched a butterfly");
         }
     }
 
     public void death() {
-        //check lives, if 0 on death game over otherwise remove life and reset to start.
         trans.position = StartLocation;
-        gameController.restartTimer();        
-       
-
+        gameController.restartTimer();
+        gameController.LoseLife();
     }
-
 }
