@@ -15,6 +15,7 @@ public class GameManagerScript_Frogger : MonoBehaviour
     [SerializeField] private GameObject Life2;
     [SerializeField] private RectTransform Timer;
     [SerializeField] FroggerController froggerController;
+    private int goalCount;
     public bool paused = false;
     public float timerTotal;
     public int ExtraLives;
@@ -25,6 +26,7 @@ public class GameManagerScript_Frogger : MonoBehaviour
         Debug.Log(timerTotal);
         StartCoroutine(startTimer());
         ExtraLives = 2;
+        goalCount = 0;
     }
 
     // Update is called once per frame
@@ -50,13 +52,20 @@ public class GameManagerScript_Frogger : MonoBehaviour
             Time.timeScale = 1;
         }
 
-
     }
 
     public void updatePlayerScore() {
         playerScore += 100;
+        goalCount++;
         PlayerScoreText.text = playerScore.ToString();
         Debug.Log(playerScore);
+
+        if (goalCount == 5)
+        {
+            goalCount = 0;
+            restartTimer();
+            froggerController.resetPosition();
+        }
     }
 
 

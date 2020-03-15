@@ -10,6 +10,7 @@ public class FroggerController : MonoBehaviour {
     [SerializeField] Transform trans;
     [SerializeField] Animator anim;
     private Vector3 StartLocation;
+    private Quaternion startRotation;
     private GameObject turtleOrLog;
     [SerializeField] GameManagerScript_Frogger gameController;
 
@@ -35,6 +36,7 @@ public class FroggerController : MonoBehaviour {
         onTurtleOrLog = false;
         direction = Direction.north;
         StartLocation = trans.position;
+        startRotation = trans.rotation;
     }
 
     void Update() {
@@ -45,12 +47,10 @@ public class FroggerController : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.D) && !moving) {
             Debug.Log("Frog is about to move right");
             TurnRight();
-            //Idle();
         }
         else if (Input.GetKeyDown(KeyCode.A) && !moving) {
             Debug.Log("Frog is about to move left");
             TurnLeft();
-            //Idle();
         }
         else {
             Idle();
@@ -65,7 +65,7 @@ public class FroggerController : MonoBehaviour {
 
     void OnAnimatorMove() {
 
-        if (anim) {
+        if (anim && !anim.GetBool("Stop")) {
             if (direction == Direction.north) {
                 Vector3 newPosition = transform.position;
                 newPosition.z += anim.GetFloat("Jump Speed") * Time.deltaTime;
@@ -113,6 +113,7 @@ public class FroggerController : MonoBehaviour {
         }
         anim.SetTrigger("Jump");
         moving = true;
+        anim.SetBool("Stop", false);
     }
 
     public void finishJump(float value) {
@@ -158,6 +159,7 @@ public class FroggerController : MonoBehaviour {
         Debug.Log("frog is now facing " + direction);
         anim.SetTrigger("TurnLeft");
         moving = true;
+        anim.SetBool("Stop", false);
     }
 
     public void TurnRight() {
@@ -168,6 +170,7 @@ public class FroggerController : MonoBehaviour {
         Debug.Log("frog is now facing " + direction);
         anim.SetTrigger("TurnRight");
         moving = true;
+        anim.SetBool("Stop", false);
     }
 
     void RootMotion() {
@@ -201,6 +204,11 @@ public class FroggerController : MonoBehaviour {
             death();
             Debug.Log("Hit by car");
         }
+        else if (Collider.gameObject.layer == 11)
+        {
+            death();
+            Debug.Log("Hit a wall/border and went out of bounds!");
+        }
         else if (Collider.gameObject.layer == 13) {
             death();
             Debug.Log("Fell into the water");
@@ -218,8 +226,18 @@ public class FroggerController : MonoBehaviour {
     }
 
     public void death() {
-        trans.position = StartLocation;
+        resetPosition();
         gameController.restartTimer();
         gameController.LoseLife();
+    }
+
+    public void resetPosition()
+    {
+        anim.SetBool("Stop", true);
+        trans.position = StartLocation;
+        trans.rotation = startRotation;
+        canMove();
+        direction = Direction.north;
+        turnCounter = 0;
     }
 }
