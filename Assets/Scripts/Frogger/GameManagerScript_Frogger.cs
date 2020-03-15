@@ -15,7 +15,7 @@ public class GameManagerScript_Frogger : MonoBehaviour
     [SerializeField] private GameObject Life2;
     [SerializeField] private RectTransform Timer;
     [SerializeField] FroggerController froggerController;
-    private int goalCount;
+    public int goalCount;
     public bool paused = false;
     public float timerTotal;
     public int ExtraLives;
@@ -63,8 +63,10 @@ public class GameManagerScript_Frogger : MonoBehaviour
         if (goalCount == 5)
         {
             goalCount = 0;
-            restartTimer();
             froggerController.resetPosition();
+            ExtraLives = 2;
+            restartTimer();
+
         }
     }
 

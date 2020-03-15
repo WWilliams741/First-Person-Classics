@@ -220,7 +220,8 @@ public class FroggerController : MonoBehaviour {
             Debug.Log("Going on top of a turtle/log");
         }
         else if (Collider.gameObject.layer == 15) {
-            death();
+            resetPosition();
+            gameController.restartTimer();
             Debug.Log("Touched a butterfly");
         }
     }
