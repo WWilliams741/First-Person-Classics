@@ -11,6 +11,7 @@ public class GameManagerScript_Frogger : MonoBehaviour
     
     [SerializeField] private GameObject PauseMenuUI;
     [SerializeField] private GameObject LoseMenuUI;
+    [SerializeField] private GameObject WinMenuUI;
     [SerializeField] private GameObject Life1;
     [SerializeField] private GameObject Life2;
     [SerializeField] private RectTransform Timer;
@@ -61,12 +62,17 @@ public class GameManagerScript_Frogger : MonoBehaviour
         Debug.Log(playerScore);
 
         if (goalCount == 5)
-        {
+        {   /*
             goalCount = 0;
             froggerController.resetPosition();
             ExtraLives = 2;
-            restartTimer();
-
+            restartTimer();*/
+            if (SceneManager.GetActiveScene().name == "Frogger")
+                SceneManager.LoadScene("Frogger level 2");
+            else {
+                paused = true;
+                WinMenuUI.SetActive(true);
+            }
         }
     }
 
@@ -87,18 +93,18 @@ public class GameManagerScript_Frogger : MonoBehaviour
          Application.Quit();
 #endif
     }
-    public float totalTime = 30;
+    public float currentTime = 60;
     public IEnumerator startTimer() {
         
 
         while (true) {
             yield return new WaitForSecondsRealtime(1);
-            if (!paused && totalTime > 0) {
-                totalTime -= 1;
+            if (!paused && currentTime > 0) {
+                currentTime -= 1;
 
-                Timer.sizeDelta = new Vector2(timerTotal * totalTime / 30, Timer.rect.height);
+                Timer.sizeDelta = new Vector2(timerTotal * currentTime / 60, Timer.rect.height);
             }
-            else if (totalTime < 1) {
+            else if (currentTime < 1) {
                 froggerController.death();
                 Debug.Log("deth");
                 
@@ -110,7 +116,7 @@ public class GameManagerScript_Frogger : MonoBehaviour
     }
 
     public void restartTimer() {
-        totalTime = 31;
+        currentTime = 61;
     }
 
     public void LoseLife() {
