@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Testing-Playground.unity
     guid: 968e22c74684b4047bce45cb1ff480a9
+  - enabled: 1
+    path: Assets/Scenes/Frogger level 2.unity
+    guid: 6d84fd2fe2349dc4da2969da217fd8c4
   m_configObjects: {}
