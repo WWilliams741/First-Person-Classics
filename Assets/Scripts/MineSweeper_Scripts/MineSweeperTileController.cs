@@ -10,7 +10,7 @@ public class MineSweeperTileController : MonoBehaviour {
     [SerializeField] GameObject tile;
     [SerializeField] Material darkerTile;
     [SerializeField] TextMeshProUGUI mineCount;
-    
+    public bool pressed = false;
     
 
     // Start is called before the first frame update
@@ -30,6 +30,7 @@ public class MineSweeperTileController : MonoBehaviour {
         tile.transform.position = Vector3.Lerp(tile.transform.position, newPos, 1.0f);
         tileMaterial.material = darkerTile;
         mineCount.text = TileValue.ToString();
+        pressed = true;
 
     }
 
