@@ -55335,7 +55335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: d369328ec3e658644b9a81028ddcad28, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.654068
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: d369328ec3e658644b9a81028ddcad28, type: 3}
       propertyPath: m_LocalPosition.y
@@ -55343,7 +55343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: d369328ec3e658644b9a81028ddcad28, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.050695
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: d369328ec3e658644b9a81028ddcad28, type: 3}
       propertyPath: m_LocalRotation.x
@@ -55381,6 +55381,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: a6077e0111914294d92a23c354f12634, type: 2}
+    - target: {fileID: 9500000, guid: d369328ec3e658644b9a81028ddcad28, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d369328ec3e658644b9a81028ddcad28, type: 3}
 --- !u!1001 &1584864507
@@ -66300,6 +66304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1958257675}
   gameController: {fileID: 1560027259}
+  hips: {fileID: 763729361}
 --- !u!1001 &1959581661
 PrefabInstance:
   m_ObjectHideFlags: 0

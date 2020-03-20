@@ -7,6 +7,7 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
 
     [SerializeField] Animator anim;
     [SerializeField] MineSweeperGameController gameController;
+    //[SerializeField] Transform hips;
 
 
     // Start is called before the first frame update
@@ -21,6 +22,16 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             anim.SetBool("Walking", true);
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            Debug.Log("I am turning left");
+            transform.Rotate(Vector3.up, -1f);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            Debug.Log("I am turning right");
+            transform.Rotate(Vector3.up, 1f);
         }
 
         if(Input.GetMouseButtonDown(0))
@@ -52,5 +63,11 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
             //start.y += 1.5f;
             //Debug.DrawRay(start, ray.direction * 3f, Color.red, 100f);
         }
+    }
+
+    public void resetWalk()
+    {
+        //transform.position = new Vector3(hips.position.x, transform.position.y, hips.position.z);
+        anim.SetBool("Walking", false);
     }
 }
