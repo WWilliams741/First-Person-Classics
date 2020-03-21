@@ -23,7 +23,8 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
         {
             anim.SetBool("Walking", true);
         }
-        else if (Input.GetKey(KeyCode.A))
+
+        if (Input.GetKey(KeyCode.A))
         {
             Debug.Log("I am turning left");
             transform.Rotate(Vector3.up, -1f);
@@ -42,6 +43,15 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
         else if (Input.GetMouseButtonDown(1))
         {
             Debug.Log("right clicking!");
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            anim.speed = 2f;
+        }
+        else
+        {
+            anim.speed = 1f;
         }
     }
 

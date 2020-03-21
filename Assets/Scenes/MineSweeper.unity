@@ -66304,7 +66304,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1958257675}
   gameController: {fileID: 1560027259}
-  hips: {fileID: 763729361}
 --- !u!1001 &1959581661
 PrefabInstance:
   m_ObjectHideFlags: 0
