@@ -6,7 +6,7 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
 {
 
     [SerializeField] Animator anim;
-    [SerializeField] MineSweeperGameController gameController;
+    [SerializeField] GameObject gameController;
     //[SerializeField] Transform hips;
 
 
@@ -43,6 +43,7 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
         else if (Input.GetMouseButtonDown(1))
         {
             Debug.Log("right clicking!");
+            markBlock();
         }
 
         if (Input.GetKey(KeyCode.LeftShift))
@@ -63,15 +64,30 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, blockLayerMask)) {
-            Debug.Log("I hit a block!");
+            Debug.Log("I hit a block! at " + hit.transform.position);
+            gameController.GetComponent<MineSweeperGameController>().checkTile( (int)hit.transform.position.x, (int)hit.transform.position.z);
+            
+            /*
             MineSweeperTileController block_script = hit.transform.gameObject.GetComponent<MineSweeperTileController>();
             if(!block_script.pressed)
             {
                 block_script.revealTile(1);
-            }
+            }*/
             //Vector3 start = transform.position;
             //start.y += 1.5f;
             //Debug.DrawRay(start, ray.direction * 3f, Color.red, 100f);
+        }
+    }
+
+    void markBlock() {
+        LayerMask blockLayerMask = 1 << 17;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, blockLayerMask)) {
+            Debug.Log("I marked a block! at " + hit.transform.position);
+            gameController.GetComponent<MineSweeperGameController>().markBlock((int)hit.transform.position.x, (int)hit.transform.position.z);
+
+
         }
     }
 
