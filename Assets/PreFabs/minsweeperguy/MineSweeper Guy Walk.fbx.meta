@@ -194,7 +194,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.5431034
+      - time: 0.33740717
         functionName: resetWalk
         data: 
         objectReferenceParameter: {instanceID: 0}
