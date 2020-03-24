@@ -71,19 +71,17 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, blockLayerMask)) {
-            Debug.Log("I hit a block! at " + hit.transform.position);
-            gameController.GetComponent<MineSweeperGameController>().checkTile( (int)hit.transform.position.x, (int)hit.transform.position.z);
-            
-            /*
-            MineSweeperTileController block_script = hit.transform.gameObject.GetComponent<MineSweeperTileController>();
-            if(!block_script.pressed)
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, blockLayerMask))
+        {
+            if (!hit.transform.tag.Equals("walls"))
             {
-                block_script.revealTile(1);
-            }*/
-            //Vector3 start = transform.position;
-            //start.y += 1.5f;
-            //Debug.DrawRay(start, ray.direction * 3f, Color.red, 100f);
+                Debug.Log("I marked a block! at " + hit.transform.position);
+                gameController.GetComponent<MineSweeperGameController>().checkTile((int)hit.transform.position.x, (int)hit.transform.position.z);
+            }
+            else
+            {
+                Debug.Log("I hit a wall!");
+            }
         }
     }
 
@@ -92,10 +90,15 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, blockLayerMask)) {
-            Debug.Log("I marked a block! at " + hit.transform.position);
-            gameController.GetComponent<MineSweeperGameController>().markBlock((int)hit.transform.position.x, (int)hit.transform.position.z);
-
-
+            if(!hit.transform.tag.Equals("walls"))
+            {
+                Debug.Log("I marked a block! at " + hit.transform.position);
+                gameController.GetComponent<MineSweeperGameController>().markBlock((int)hit.transform.position.x, (int)hit.transform.position.z);
+            }
+            else
+            {
+                Debug.Log("I hit a wall!");
+            }
         }
     }
 

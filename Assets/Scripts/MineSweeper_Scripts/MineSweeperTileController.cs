@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class MineSweeperTileController : MonoBehaviour {
     [SerializeField] Renderer tileMaterial;
+    [SerializeField] Material tileDefaultMaterial;
     [SerializeField] GameObject tile;
     [SerializeField] Material darkerTile;
     [SerializeField] TextMeshProUGUI mineCount;
@@ -42,8 +43,23 @@ public class MineSweeperTileController : MonoBehaviour {
             //bakoom
             bomb.enabled = true;
 
+            // Send them to game over screen here (go back to gameManager Script:
+
         }
 
+    }
+
+    public void resetTile()
+    {
+        Vector3 newPos = new Vector3(tile.transform.position.x, 0f, tile.transform.position.z);
+        tile.transform.position = Vector3.Lerp(tile.transform.position, newPos, 1.0f);
+        tileMaterial.material = tileDefaultMaterial;
+
+        mineCount.text = "";
+
+        pressed = false;
+        flag.enabled = false;
+        bomb.enabled = false;
     }
 
     public void markBlock() {

@@ -1,15 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class MineSweeperGameController : MonoBehaviour{
-    
+public class MineSweeperGameController : MonoBehaviour {
+
+    [SerializeField] Transform frontWall;
+    [SerializeField] Transform rightWall;
+    [SerializeField] Transform MineSweeperGuy;
+    [SerializeField] GameObject Menu;
+
     [SerializeField] MineSweeperTileController[] tileArray;
     MineSweeperTileController[,] multiTileArray;
     public int[,] bombArray;
     public int boardSize;
     public int bombCount;
-    private bool firstClick = false;
+    private bool firstClick;
+    private bool paused;
 
 
     // Start is called before the first frame update
@@ -24,6 +31,12 @@ public class MineSweeperGameController : MonoBehaviour{
                 //tileArray[row * 23 + col].transform.parent.gameObject.SetActive(false);
             }
         }*/
+
+        //MineSweeperGuyStart = MineSweeperGuy.position;
+
+        Time.timeScale = 0;
+        firstClick = false;
+        paused = true;
     }
 
     // Update is called once per frame
@@ -35,24 +48,34 @@ public class MineSweeperGameController : MonoBehaviour{
             }
         }
 
+        un_Pause();
     }
 
 
     public void checkTile(int xCord, int zCord) {
-        if (!firstClick) {
-            firstClick = true;
-            generateBoard(xCord, zCord);
+        if(!paused)
+        {
+            if (!firstClick)
+            {
+                firstClick = true;
+                generateBoard(xCord, zCord);
+            }
+            if (tileArray[xCord * 24 + zCord].flag.enabled)
+            {
+                return;
+            }
+            int value = bombArray[xCord, zCord];
+            Debug.Log("revealing tile at (" + xCord + ", " + zCord + ") with value: " + value + ", " + (xCord * 24 + zCord));
+            tileArray[xCord * 24 + zCord].revealTile(value);
+            if (value == 0)
+            {
+                revealNeighbors(xCord, zCord);
+            }
         }
-        if (tileArray[xCord * 24 + zCord].flag.enabled) {
-            return;
-        }
-        int value = bombArray[xCord, zCord];
-        Debug.Log("revealing tile at (" + xCord + ", " + zCord + ") with value: " + value + ", " + (xCord * 24 + zCord));
-        tileArray[xCord * 24 + zCord].revealTile(value);
-        if (value == 0) {
-            revealNeighbors(xCord, zCord);
-        }
+        
     }
+
+
     public void checkTileIgnoreFlag(int xCord, int zCord) {
         int value = bombArray[xCord, zCord];
         Debug.Log("revealing tile at (" + xCord + ", " + zCord + ") with value: " + value + ", " + (xCord * 24 + zCord));
@@ -67,14 +90,14 @@ public class MineSweeperGameController : MonoBehaviour{
     private void generateBoard(int xCord, int zCord) {
         //checks size of board then assigns the amount of bombs accordingly
         bombCount = boardSize == 10 ? 10 : boardSize == 18 ? 40 : boardSize == 24 ? 100 : boardSize * 3;
-        int randX = Random.Range(0, 24);
-        int randZ = Random.Range(0, 24);
+        int randX = Random.Range(0, boardSize);
+        int randZ = Random.Range(0, boardSize);
         int[,] bombLocations = new int[bombCount,2];
    
         for (int i = 0; i < bombCount; i++) {
             do {
-                randX = Random.Range(0, 24);
-                randZ = Random.Range(0, 24);
+                randX = Random.Range(0, boardSize);
+                randZ = Random.Range(0, boardSize);
             } while ((Mathf.Abs(randX - xCord) < 3 && Mathf.Abs(randZ - zCord) < 3) || (bombArray[randX, randZ] == -1));
             bombArray[randX, randZ] = -1;
             bombLocations[i, 0] = randX;
@@ -181,4 +204,91 @@ public class MineSweeperGameController : MonoBehaviour{
     }
 
 
+
+    public void goToMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void setEasy()
+    {
+        frontWall.position = new Vector3(frontWall.position.x, frontWall.position.y, 10f);
+        rightWall.position = new Vector3(10f, rightWall.position.y, rightWall.position.z);
+
+        MineSweeperGuy.position = new Vector3(5f, 0f, 5f);
+
+        for(int tile = 0; tile < tileArray.Length; tile++)
+        {
+            tileArray[tile].resetTile();
+        }
+
+        boardSize = 10;
+
+        firstClick = false;
+        paused = false;
+        Time.timeScale = 1;
+
+        Menu.SetActive(false);
+    }
+
+    public void setMedium()
+    {
+        frontWall.position = new Vector3(frontWall.position.x, frontWall.position.y, 18f);
+        rightWall.position = new Vector3(18f, rightWall.position.y, rightWall.position.z);
+
+        MineSweeperGuy.position = new Vector3(9f, 0f, 9f);
+
+        for (int tile = 0; tile < tileArray.Length; tile++)
+        {
+            tileArray[tile].resetTile();
+        }
+
+        boardSize = 18;
+
+        firstClick = false;
+        paused = false;
+        Time.timeScale = 1;
+
+        Menu.SetActive(false);
+    }
+
+    public void setHard()
+    {
+        frontWall.position = new Vector3(frontWall.position.x, frontWall.position.y, 24f);
+        rightWall.position = new Vector3(24f, rightWall.position.y, rightWall.position.z);
+
+        MineSweeperGuy.position = new Vector3(12f, 0f, 12f);
+        MineSweeperGuy.rotation = new Quaternion();
+
+        for (int tile = 0; tile < tileArray.Length; tile++)
+        {
+            tileArray[tile].resetTile();
+        }
+
+        boardSize = 24;
+
+        firstClick = false;
+        paused = false;
+        Time.timeScale = 1;
+
+        Menu.SetActive(false);
+    }
+
+    private void un_Pause()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape) && !Menu.activeSelf)
+        {
+            Debug.Log("Pausing the game");
+            Menu.SetActive(true);
+            Time.timeScale = 0;
+            paused = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && Menu.activeSelf)
+        {
+            Debug.Log("Un-pausing the game");
+            Menu.SetActive(false);
+            Time.timeScale = 1;
+            paused = false;
+        }
+    }
 }
