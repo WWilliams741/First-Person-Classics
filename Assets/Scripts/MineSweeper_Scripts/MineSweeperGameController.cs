@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MineSweeperGameController : MonoBehaviour {
 
@@ -11,6 +12,9 @@ public class MineSweeperGameController : MonoBehaviour {
     [SerializeField] GameObject DifficultyMenu;
     [SerializeField] GameObject WinMenu;
     [SerializeField] GameObject LoseMenu;
+    [SerializeField] TextMeshProUGUI WinCount;
+    [SerializeField] TextMeshProUGUI LoseCount;
+
 
     [SerializeField] MineSweeperTileController[] tileArray;
     MineSweeperTileController[,] multiTileArray;
@@ -57,6 +61,8 @@ public class MineSweeperGameController : MonoBehaviour {
         if (revealedTiles == (boardSize * boardSize) - bombCount) {
             //win game
             WinMenu.SetActive(true);
+            WinCount.text = "You uncovered " + revealedTiles + " tiles!";
+
         }
 
 
@@ -64,6 +70,7 @@ public class MineSweeperGameController : MonoBehaviour {
 
     public void LoseGame() {
         LoseMenu.SetActive(true);
+        LoseCount.text = "You uncovered " + revealedTiles + " tiles!";
     }
 
 

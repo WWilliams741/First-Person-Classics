@@ -23,11 +23,11 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            //anim.SetBool("Walking", true);
+            anim.SetBool("Walking", true);
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            //anim.SetBool("Walking Back", true);
+            anim.SetBool("Walking Back", true);
         }
 
         if (Input.GetKey(KeyCode.A))
