@@ -8,10 +8,13 @@ public class MineSweeperGameController : MonoBehaviour {
     [SerializeField] Transform frontWall;
     [SerializeField] Transform rightWall;
     [SerializeField] Transform MineSweeperGuy;
-    [SerializeField] GameObject Menu;
+    [SerializeField] GameObject DifficultyMenu;
+    [SerializeField] GameObject WinMenu;
+    [SerializeField] GameObject LoseMenu;
 
     [SerializeField] MineSweeperTileController[] tileArray;
     MineSweeperTileController[,] multiTileArray;
+    public int revealedTiles;
     public int[,] bombArray;
     public int boardSize;
     public int bombCount;
@@ -21,6 +24,8 @@ public class MineSweeperGameController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        revealedTiles = 0;
+        //default board size
         boardSize = 24;
         bombArray = new int[boardSize, boardSize];
         /*
@@ -47,8 +52,18 @@ public class MineSweeperGameController : MonoBehaviour {
 
             }
         }
-
         un_Pause();
+
+        if (revealedTiles == (boardSize * boardSize) - bombCount) {
+            //win game
+            WinMenu.SetActive(true);
+        }
+
+
+    }
+
+    public void LoseGame() {
+        LoseMenu.SetActive(true);
     }
 
 
@@ -209,9 +224,27 @@ public class MineSweeperGameController : MonoBehaviour {
     {
         SceneManager.LoadScene("Main Menu");
     }
+    public void restart() {
+        SceneManager.LoadScene("MineSweeper");
+
+    }
+
+
+    public void QuitGame(string a) {
+        Debug.Log("Quit Game Button Clicked");
+
+#if UNITY_EDITOR
+        // Application.Quit() does not work in the editor so
+        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+         Application.Quit();
+#endif
+    }
 
     public void setEasy()
     {
+        revealedTiles = 0;
         frontWall.position = new Vector3(frontWall.position.x, frontWall.position.y, 10f);
         rightWall.position = new Vector3(10f, rightWall.position.y, rightWall.position.z);
 
@@ -228,11 +261,12 @@ public class MineSweeperGameController : MonoBehaviour {
         paused = false;
         Time.timeScale = 1;
 
-        Menu.SetActive(false);
+        DifficultyMenu.SetActive(false);
     }
 
     public void setMedium()
     {
+        revealedTiles = 0;
         frontWall.position = new Vector3(frontWall.position.x, frontWall.position.y, 18f);
         rightWall.position = new Vector3(18f, rightWall.position.y, rightWall.position.z);
 
@@ -249,11 +283,12 @@ public class MineSweeperGameController : MonoBehaviour {
         paused = false;
         Time.timeScale = 1;
 
-        Menu.SetActive(false);
+        DifficultyMenu.SetActive(false);
     }
 
     public void setHard()
     {
+        revealedTiles = 0;
         frontWall.position = new Vector3(frontWall.position.x, frontWall.position.y, 24f);
         rightWall.position = new Vector3(24f, rightWall.position.y, rightWall.position.z);
 
@@ -271,22 +306,22 @@ public class MineSweeperGameController : MonoBehaviour {
         paused = false;
         Time.timeScale = 1;
 
-        Menu.SetActive(false);
+        DifficultyMenu.SetActive(false);
     }
 
     private void un_Pause()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !Menu.activeSelf)
+        if(Input.GetKeyDown(KeyCode.Escape) && !DifficultyMenu.activeSelf)
         {
             Debug.Log("Pausing the game");
-            Menu.SetActive(true);
+            DifficultyMenu.SetActive(true);
             Time.timeScale = 0;
             paused = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && Menu.activeSelf)
+        else if (Input.GetKeyDown(KeyCode.Escape) && DifficultyMenu.activeSelf)
         {
             Debug.Log("Un-pausing the game");
-            Menu.SetActive(false);
+            DifficultyMenu.SetActive(false);
             Time.timeScale = 1;
             paused = false;
         }

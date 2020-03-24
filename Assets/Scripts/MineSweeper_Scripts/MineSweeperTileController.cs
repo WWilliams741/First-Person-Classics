@@ -11,6 +11,7 @@ public class MineSweeperTileController : MonoBehaviour {
     [SerializeField] GameObject tile;
     [SerializeField] Material darkerTile;
     [SerializeField] TextMeshProUGUI mineCount;
+    [SerializeField] MineSweeperGameController gameManager;
     public SpriteRenderer flag;
     public SpriteRenderer bomb;
     public bool pressed = false;
@@ -38,13 +39,14 @@ public class MineSweeperTileController : MonoBehaviour {
                 mineCount.text = TileValue.ToString();
             pressed = true;
             flag.enabled = false;
+            gameManager.revealedTiles += 1;
         }
         else if (TileValue == -1) {
             //bakoom
             bomb.enabled = true;
 
             // Send them to game over screen here (go back to gameManager Script:
-
+            gameManager.LoseGame();
         }
 
     }

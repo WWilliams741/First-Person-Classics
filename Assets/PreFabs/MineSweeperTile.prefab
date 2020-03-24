@@ -366,6 +366,8 @@ MonoBehaviour:
   tile: {fileID: 3691983744049432979}
   darkerTile: {fileID: 2100000, guid: 8efa4455fdf27674f81b52f854f392d4, type: 2}
   mineCount: {fileID: 3691983743308514572}
+  gameManager: {fileID: 7908582264237788699, guid: ffa17b14868e1c3468facc20fc0abe3f,
+    type: 3}
   flag: {fileID: 5472943294670590639}
   bomb: {fileID: 5735186910378591146}
   pressed: 0
