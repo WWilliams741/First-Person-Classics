@@ -7,6 +7,9 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
 
     [SerializeField] Animator anim;
     [SerializeField] GameObject gameController;
+    [SerializeField] SoundManagerScript soundManager;
+
+    private MineSweeperGameController gameControllerScript;
 
     private float turnSpeed;
 
@@ -16,6 +19,7 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
     {
         anim.SetBool("Walking", false);
         turnSpeed = 1f;
+        gameControllerScript = gameController.GetComponent<MineSweeperGameController>();
     }
 
     // Update is called once per frame
@@ -76,7 +80,11 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
             if (!hit.transform.tag.Equals("walls"))
             {
                 Debug.Log("I marked a block! at " + hit.transform.position);
-                gameController.GetComponent<MineSweeperGameController>().checkTile((int)hit.transform.position.x, (int)hit.transform.position.z);
+                if (!gameControllerScript.paused)
+                {
+                    soundManager.playSound("left_click");
+                }
+                gameControllerScript.checkTile((int)hit.transform.position.x, (int)hit.transform.position.z);
             }
             else
             {
@@ -93,7 +101,7 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
             if(!hit.transform.tag.Equals("walls"))
             {
                 Debug.Log("I marked a block! at " + hit.transform.position);
-                gameController.GetComponent<MineSweeperGameController>().markBlock((int)hit.transform.position.x, (int)hit.transform.position.z);
+                gameControllerScript.markBlock((int)hit.transform.position.x, (int)hit.transform.position.z);
             }
             else
             {

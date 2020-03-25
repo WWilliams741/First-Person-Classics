@@ -25,7 +25,7 @@ public class MineSweeperGameController : MonoBehaviour {
     public int boardSize;
     public int bombCount;
     private bool firstClick;
-    private bool paused;
+    public bool paused;
 
 
     // Start is called before the first frame update
@@ -93,14 +93,11 @@ public class MineSweeperGameController : MonoBehaviour {
             Debug.Log("revealing tile at (" + xCord + ", " + zCord + ") with value: " + value + ", " + (xCord * 24 + zCord));
             tileArray[xCord * 24 + zCord].revealTile(value);
 
-            soundManager.playSound("left_click");
-
             if (value == 0)
             {
                 revealNeighbors(xCord, zCord);
             }
         }
-        
     }
 
 
