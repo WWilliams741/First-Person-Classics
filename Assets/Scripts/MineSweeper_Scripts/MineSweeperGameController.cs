@@ -15,6 +15,8 @@ public class MineSweeperGameController : MonoBehaviour {
     [SerializeField] TextMeshProUGUI WinCount;
     [SerializeField] TextMeshProUGUI LoseCount;
 
+    [SerializeField] SoundManagerScript soundManager;
+
 
     [SerializeField] MineSweeperTileController[] tileArray;
     MineSweeperTileController[,] multiTileArray;
@@ -69,6 +71,7 @@ public class MineSweeperGameController : MonoBehaviour {
     }
 
     public void LoseGame() {
+        soundManager.playSound("kaboom");
         LoseMenu.SetActive(true);
         LoseCount.text = "You uncovered " + revealedTiles + " tiles!";
     }
@@ -89,6 +92,9 @@ public class MineSweeperGameController : MonoBehaviour {
             int value = bombArray[xCord, zCord];
             Debug.Log("revealing tile at (" + xCord + ", " + zCord + ") with value: " + value + ", " + (xCord * 24 + zCord));
             tileArray[xCord * 24 + zCord].revealTile(value);
+
+            soundManager.playSound("left_click");
+
             if (value == 0)
             {
                 revealNeighbors(xCord, zCord);

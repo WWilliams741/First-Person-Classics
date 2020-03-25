@@ -12,6 +12,7 @@ public class MineSweeperTileController : MonoBehaviour {
     [SerializeField] Material darkerTile;
     [SerializeField] TextMeshProUGUI mineCount;
     [SerializeField] MineSweeperGameController gameManager;
+    [SerializeField] SoundManagerScript soundManager;
     public SpriteRenderer flag;
     public SpriteRenderer bomb;
     public bool pressed = false;
