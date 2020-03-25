@@ -15,7 +15,7 @@ public class MineSweeperGameController : MonoBehaviour {
     [SerializeField] TextMeshProUGUI WinCount;
     [SerializeField] TextMeshProUGUI LoseCount;
 
-    [SerializeField] SoundManagerScript soundManager;
+    [SerializeField] SoundManagerScriptMineSweeper soundManager;
 
 
     [SerializeField] MineSweeperTileController[] tileArray;
@@ -26,6 +26,7 @@ public class MineSweeperGameController : MonoBehaviour {
     public int bombCount;
     private bool firstClick;
     public bool paused;
+    private bool lost;
 
 
     // Start is called before the first frame update
@@ -48,6 +49,7 @@ public class MineSweeperGameController : MonoBehaviour {
         Time.timeScale = 0;
         firstClick = false;
         paused = true;
+        lost = false;
     }
 
     // Update is called once per frame
@@ -73,6 +75,9 @@ public class MineSweeperGameController : MonoBehaviour {
     public void LoseGame() {
         soundManager.playSound("kaboom");
         LoseMenu.SetActive(true);
+        paused = true;
+        lost = true;
+        Time.timeScale = 0;
         LoseCount.text = "You uncovered " + revealedTiles + " tiles!";
     }
 
@@ -321,14 +326,14 @@ public class MineSweeperGameController : MonoBehaviour {
 
     private void un_Pause()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !DifficultyMenu.activeSelf)
+        if(Input.GetKeyDown(KeyCode.Escape) && !DifficultyMenu.activeSelf && !lost)
         {
             Debug.Log("Pausing the game");
             DifficultyMenu.SetActive(true);
             Time.timeScale = 0;
             paused = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && DifficultyMenu.activeSelf)
+        else if (Input.GetKeyDown(KeyCode.Escape) && DifficultyMenu.activeSelf && !lost)
         {
             Debug.Log("Un-pausing the game");
             DifficultyMenu.SetActive(false);

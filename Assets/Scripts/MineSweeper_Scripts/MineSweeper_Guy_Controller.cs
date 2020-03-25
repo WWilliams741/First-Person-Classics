@@ -7,7 +7,7 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
 
     [SerializeField] Animator anim;
     [SerializeField] GameObject gameController;
-    [SerializeField] SoundManagerScript soundManager;
+    [SerializeField] SoundManagerScriptMineSweeper soundManager;
 
     private MineSweeperGameController gameControllerScript;
 
@@ -94,20 +94,24 @@ public class MineSweeper_Guy_Controller : MonoBehaviour
     }
 
     void markBlock() {
-        LayerMask blockLayerMask = 1 << 17;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, blockLayerMask)) {
-            if(!hit.transform.tag.Equals("walls"))
+        if (!gameControllerScript.paused)
+        {
+            LayerMask blockLayerMask = 1 << 17;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, blockLayerMask))
             {
-                Debug.Log("I marked a block! at " + hit.transform.position);
-                gameControllerScript.markBlock((int)hit.transform.position.x, (int)hit.transform.position.z);
+                if (!hit.transform.tag.Equals("walls"))
+                {
+                    Debug.Log("I marked a block! at " + hit.transform.position);
+                    gameControllerScript.markBlock((int)hit.transform.position.x, (int)hit.transform.position.z);
+                }
+                else
+                {
+                    Debug.Log("I hit a wall!");
+                }
             }
-            else
-            {
-                Debug.Log("I hit a wall!");
-            }
-        }
+        }      
     }
 
     public void resetWalk()

@@ -13,6 +13,7 @@ public class FroggerController : MonoBehaviour {
     private Quaternion startRotation;
     private GameObject turtleOrLog;
     [SerializeField] GameManagerScript_Frogger gameController;
+    [SerializeField] SoundManagerScriptFrogger soundManager;
 
     //public GameObject guts;
     //[SerializeField] GameObject gutsEx;
@@ -227,6 +228,7 @@ public class FroggerController : MonoBehaviour {
     }
 
     public void death() {
+        soundManager.playSound("EXPLOSION");
         resetPosition();
         gameController.restartTimer();
         gameController.LoseLife();

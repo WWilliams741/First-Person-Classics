@@ -11,6 +11,7 @@ public class PongBallMovement : MonoBehaviour
     [SerializeField] float Yspeed;
 
     [SerializeField] GameManagerScript_Pong gameManager;
+    [SerializeField] SoundManagerScriptPong soundManager;
 
 
     [SerializeField] bool randomizeSpeed;
@@ -90,6 +91,7 @@ public class PongBallMovement : MonoBehaviour
             Debug.Log("hit a paddle");
             ball.velocity = new Vector3(-Xspeed, Yspeed, 0f);
             Xspeed = -Xspeed;
+            soundManager.playSound("bounce");
         }
 
         //score

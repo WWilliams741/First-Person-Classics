@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManagerScript : MonoBehaviour
+public class SoundManagerScriptMineSweeper : MonoBehaviour
 {
 
     [SerializeField] AudioClip left_click_sound;
