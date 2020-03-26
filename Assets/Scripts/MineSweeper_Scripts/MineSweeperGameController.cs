@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class MineSweeperGameController : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class MineSweeperGameController : MonoBehaviour {
     [SerializeField] TextMeshProUGUI WinCount;
     [SerializeField] TextMeshProUGUI LoseCount;
 
+    [SerializeField] GameObject Explosion;
     [SerializeField] SoundManagerScriptMineSweeper soundManager;
 
 
@@ -72,15 +74,18 @@ public class MineSweeperGameController : MonoBehaviour {
 
     }
 
-    public void LoseGame() {
+    public void LoseGame(Transform tileLocation) {
         soundManager.playSound("kaboom");
+        Explosion.transform.position = tileLocation.position;
+        Explosion.SetActive(true);
+        StartCoroutine(resetExplosion());
+
         LoseMenu.SetActive(true);
         paused = true;
         lost = true;
         Time.timeScale = 0;
         LoseCount.text = "You uncovered " + revealedTiles + " tiles!";
     }
-
 
     public void checkTile(int xCord, int zCord) {
         if(!paused)
@@ -120,14 +125,14 @@ public class MineSweeperGameController : MonoBehaviour {
     private void generateBoard(int xCord, int zCord) {
         //checks size of board then assigns the amount of bombs accordingly
         bombCount = boardSize == 10 ? 10 : boardSize == 18 ? 40 : boardSize == 24 ? 100 : boardSize * 3;
-        int randX = Random.Range(0, boardSize);
-        int randZ = Random.Range(0, boardSize);
+        int randX = UnityEngine.Random.Range(0, boardSize);
+        int randZ = UnityEngine.Random.Range(0, boardSize);
         int[,] bombLocations = new int[bombCount,2];
    
         for (int i = 0; i < bombCount; i++) {
             do {
-                randX = Random.Range(0, boardSize);
-                randZ = Random.Range(0, boardSize);
+                randX = UnityEngine.Random.Range(0, boardSize);
+                randZ = UnityEngine.Random.Range(0, boardSize);
             } while ((Mathf.Abs(randX - xCord) < 3 && Mathf.Abs(randZ - zCord) < 3) || (bombArray[randX, randZ] == -1));
             bombArray[randX, randZ] = -1;
             bombLocations[i, 0] = randX;
@@ -340,5 +345,11 @@ public class MineSweeperGameController : MonoBehaviour {
             Time.timeScale = 1;
             paused = false;
         }
+    }
+
+    private IEnumerator resetExplosion()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        Explosion.SetActive(false);
     }
 }

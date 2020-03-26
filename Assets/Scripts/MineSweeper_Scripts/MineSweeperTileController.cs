@@ -47,7 +47,7 @@ public class MineSweeperTileController : MonoBehaviour {
             bomb.enabled = true;
 
             // Send them to game over screen here (go back to gameManager Script:
-            gameManager.LoseGame();
+            gameManager.LoseGame(this.transform);
         }
 
     }

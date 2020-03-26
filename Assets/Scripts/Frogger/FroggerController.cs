@@ -9,6 +9,7 @@ public class FroggerController : MonoBehaviour {
     [SerializeField] Camera eyes;
     [SerializeField] Transform trans;
     [SerializeField] Animator anim;
+    [SerializeField] GameObject explosion;
     private Vector3 StartLocation;
     private Quaternion startRotation;
     private GameObject turtleOrLog;
@@ -229,6 +230,10 @@ public class FroggerController : MonoBehaviour {
 
     public void death() {
         soundManager.playSound("EXPLOSION");
+        explosion.transform.position = trans.position;
+        explosion.SetActive(true);
+        StartCoroutine(resetExplosion());
+
         resetPosition();
         gameController.restartTimer();
         gameController.LoseLife();
@@ -242,5 +247,11 @@ public class FroggerController : MonoBehaviour {
         canMove();
         direction = Direction.north;
         turnCounter = 0;
+    }
+
+    public IEnumerator resetExplosion()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        explosion.SetActive(false);
     }
 }
