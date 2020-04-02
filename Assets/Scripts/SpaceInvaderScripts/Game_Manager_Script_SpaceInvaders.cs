@@ -11,7 +11,7 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     private Coroutine[] rows;
 
     private float waitTime;
-
+    public bool hitRight;
     private int leftMost;
     private int rightMost;
 
@@ -20,8 +20,8 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     {
         waitTime = updateWaitTime();
         rows = new Coroutine[rowManagers.Length];
-
-        moveRowsRight();
+        hitRight = false;
+        moveRows();
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     {
         
     }
-
+    /*
     public int getLeftMost()
     {
         int left = rowManagers[0].Invaders.Length;
@@ -58,26 +58,47 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         }
 
         return right;
-    }
+    }*/
 
-    public void moveRowsLeft()
-    {
-        for (int i = 0; i < rows.Length; i++)
-        {
-            rows[i] = StartCoroutine(rowManagers[i].moveLeft(waitTime));
+    public void hitBoundry(string Side) {
+        if (Side == "right" && !hitRight) {
+            hitRight = true;
+            for (int i = 0; i < rows.Length; i++) {
+                rowManagers[i].left = !rowManagers[i].left;
+            }
+            moveRowsDown();
+            
+        }
+        else if (Side == "left" && hitRight) {
+            hitRight = false;
+            for (int i = 0; i < rows.Length; i++) {
+                rowManagers[i].left = !rowManagers[i].left;
+            }
+            moveRowsDown();
+            
         }
     }
 
+    
+    public void moveRows()
+    {
+        for (int i = 0; i < rows.Length; i++)
+        {
+            rows[i] = StartCoroutine(rowManagers[i].move(waitTime));
+        }
+    }
+    /*
     public void moveRowsRight()
     {
         for (int i = 0; i < rows.Length; i++)
         {
             rows[i] = StartCoroutine(rowManagers[i].moveRight(waitTime));
         }
-    }
+    }*/
 
-    public void moveRowsDown()
-    {
+    public void moveRowsDown() {
+
+
         for (int i = 0; i < rowManagers.Length; i++)
         {
             rowManagers[i].moveDown();
@@ -99,6 +120,6 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     {
         int totalAlive = getTotalAlive();
 
-        return Mathf.Log(totalAlive, 2f) + 0.5f;
+        return Mathf.Log(totalAlive, 10f) + .5f;
     }
 }

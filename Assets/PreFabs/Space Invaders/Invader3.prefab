@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 274242657498533826}
   - component: {fileID: 7254315845448495077}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: InvaderC1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 3832366731571774008}
   - component: {fileID: 7794898738595889290}
   - component: {fileID: 5309739423033998672}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Invader3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4273010764515448557}
   - component: {fileID: 4188201048807661335}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: InvaderC2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 8252723314409760893}
   - component: {fileID: 9193605714103558551}
   - component: {fileID: 2624580891450953498}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

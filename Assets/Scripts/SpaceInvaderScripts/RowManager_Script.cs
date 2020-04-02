@@ -9,11 +9,13 @@ public class RowManager_Script : MonoBehaviour
 
     private int alive;
     public bool paused;
+    public bool left;
 
     // Start is called before the first frame update
     void Start()
     {
         alive = Invaders.Length;
+        left = false;
     }
 
     // Update is called once per frame
@@ -66,22 +68,18 @@ public class RowManager_Script : MonoBehaviour
         alive = Invaders.Length;
     }
 
-    public IEnumerator moveLeft(float waitTime)
+    public IEnumerator move(float waitTime)
     {
-        while(!paused)
-        {
+        while (!paused) {
+            if (!left) {
+                transform.position = new Vector3(transform.position.x + 0.82f, transform.position.y, transform.position.z);
+            }
+            else {
+                transform.position = new Vector3(transform.position.x - 0.82f, transform.position.y, transform.position.z);
+            }
             yield return new WaitForSecondsRealtime(waitTime);
-            transform.position = new Vector3(transform.position.x - 2f, transform.position.y, transform.position.z);
         }
-    }
-
-    public IEnumerator moveRight(float waitTime)
-    {
-        while (!paused)
-        {
-            yield return new WaitForSecondsRealtime(waitTime);
-            transform.position = new Vector3(transform.position.x + 2f, transform.position.y, transform.position.z);
-        }
+        
     }
 
     public void moveDown()
