@@ -66,4 +66,16 @@ public class PlayerController_SpaceInvaders : MonoBehaviour
         }
     }
 
+    private void die()
+    {
+        // Insert losing stuff here - pause game and such:
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer.Equals(19))
+        {
+            die();
+        }
+    }
 }

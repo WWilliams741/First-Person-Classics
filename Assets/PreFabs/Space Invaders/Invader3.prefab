@@ -91,6 +91,8 @@ GameObject:
   - component: {fileID: 3832366731571774008}
   - component: {fileID: 7794898738595889290}
   - component: {fileID: 5309739423033998672}
+  - component: {fileID: 3390113342844750115}
+  - component: {fileID: 382102164878730037}
   m_Layer: 18
   m_Name: Invader3
   m_TagString: Untagged
@@ -166,11 +168,39 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4881317060645182378}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3390113342844750115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881317060645182378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333c4685e7cfd0b40b19b3747d89b77c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &382102164878730037
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881317060645182378}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1 &7007597084856443921
 GameObject:
   m_ObjectHideFlags: 0

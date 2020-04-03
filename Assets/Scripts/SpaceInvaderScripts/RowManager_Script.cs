@@ -6,6 +6,7 @@ public class RowManager_Script : MonoBehaviour
 {
 
     public GameObject[] Invaders;
+    [SerializeField] private Game_Manager_Script_SpaceInvaders gameManager;
 
     private int alive;
     public bool paused;
@@ -68,7 +69,7 @@ public class RowManager_Script : MonoBehaviour
         alive = Invaders.Length;
     }
 
-    public IEnumerator move(float waitTime)
+    public IEnumerator move()
     {
         while (!paused) {
             if (!left) {
@@ -77,7 +78,7 @@ public class RowManager_Script : MonoBehaviour
             else {
                 transform.position = new Vector3(transform.position.x - 0.82f, transform.position.y, transform.position.z);
             }
-            yield return new WaitForSecondsRealtime(waitTime);
+            yield return new WaitForSecondsRealtime(gameManager.waitTime);
         }
         
     }

@@ -1252,6 +1252,7 @@ MonoBehaviour:
   - {fileID: 13086294}
   - {fileID: 1993803974}
   - {fileID: 1293445703}
+  gameManager: {fileID: 465098549}
   paused: 0
   left: 0
 --- !u!1 &377102068 stripped
@@ -1687,6 +1688,7 @@ MonoBehaviour:
   - {fileID: 991341159}
   - {fileID: 738873447}
   - {fileID: 740400927}
+  waitTime: 0
   hitRight: 0
   paused: 0
 --- !u!4 &465098550
@@ -2420,6 +2422,7 @@ MonoBehaviour:
   - {fileID: 1472847331}
   - {fileID: 2091954123}
   - {fileID: 1283462323}
+  gameManager: {fileID: 465098549}
   paused: 0
   left: 0
 --- !u!1 &740400925
@@ -2488,6 +2491,7 @@ MonoBehaviour:
   - {fileID: 330425957}
   - {fileID: 1415527219}
   - {fileID: 167224892}
+  gameManager: {fileID: 465098549}
   paused: 0
   left: 0
 --- !u!1001 &777002347
@@ -3294,6 +3298,7 @@ MonoBehaviour:
   - {fileID: 1568700358}
   - {fileID: 363381512}
   - {fileID: 782063439}
+  gameManager: {fileID: 465098549}
   paused: 0
   left: 0
 --- !u!1001 &1033742959
@@ -6358,6 +6363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2012959424}
+  gameManager: {fileID: 465098549}
 --- !u!1 &2026958409 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6903672455326627198, guid: 1413a7fb424869843ab520a82e44c367,
@@ -6419,7 +6425,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068653945}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 30}
+  m_LocalPosition: {x: 0, y: 0, z: 16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2032754492}
@@ -6460,6 +6466,7 @@ MonoBehaviour:
   - {fileID: 392358247}
   - {fileID: 135586320}
   - {fileID: 1089194175}
+  gameManager: {fileID: 465098549}
   paused: 0
   left: 0
 --- !u!1 &2091954123 stripped

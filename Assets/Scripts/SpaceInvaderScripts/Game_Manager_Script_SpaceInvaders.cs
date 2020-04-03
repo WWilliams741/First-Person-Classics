@@ -10,7 +10,7 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
 
     private Coroutine[] rows;
 
-    private float waitTime;
+    public float waitTime;
     public bool hitRight;
     private int leftMost;
     private int rightMost;
@@ -20,7 +20,7 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waitTime = updateWaitTime();
+        updateWaitTime();
         rows = new Coroutine[rowManagers.Length];
         hitRight = false;
         moveRows();
@@ -86,7 +86,7 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     {
         for (int i = 0; i < rows.Length; i++)
         {
-            rows[i] = StartCoroutine(rowManagers[i].move(waitTime));
+            rows[i] = StartCoroutine(rowManagers[i].move());
         }
     }
     /*
@@ -118,10 +118,10 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         return alive;
     }
 
-    public float updateWaitTime()
+    public void updateWaitTime()
     {
         int totalAlive = getTotalAlive();
 
-        return Mathf.Log(totalAlive, 10f) + .5f;
+        waitTime =  Mathf.Log(totalAlive, 10f) + .25f;
     }
 }
