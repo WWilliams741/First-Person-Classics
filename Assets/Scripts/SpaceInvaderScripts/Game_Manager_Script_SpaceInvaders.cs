@@ -15,6 +15,8 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     private int leftMost;
     private int rightMost;
 
+    public bool paused = false;
+
     // Start is called before the first frame update
     void Start()
     {
