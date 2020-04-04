@@ -27,6 +27,8 @@ public class rocket_script : MonoBehaviour
             Debug.Log("hit an invader, telling gameManager to update speed.");
             gameManager.updateWaitTime();
             gameObject.SetActive(false);
+            gameManager.score += System.Convert.ToInt32(other.gameObject.tag);
+            gameManager.updatePlayerScore();
         }
         else if (other.gameObject.layer.Equals(20))
         {

@@ -7,7 +7,7 @@ public class RowManager_Script : MonoBehaviour
 
     public GameObject[] Invaders;
     [SerializeField] private Game_Manager_Script_SpaceInvaders gameManager;
-
+    [SerializeField] private Transform position;
     private int alive;
     public bool paused;
     public bool left;
@@ -22,7 +22,9 @@ public class RowManager_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (position.position.z <= 8) {
+            gameManager.GameOver();
+        }
     }
 
     public int getLeftMost()

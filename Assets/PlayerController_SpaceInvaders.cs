@@ -21,11 +21,11 @@ public class PlayerController_SpaceInvaders : MonoBehaviour
     {
         if(!gameManager.paused)
         {
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.LeftArrow))
             {
                 moveLeft();
             }
-            else if (Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 moveRight();
             }
@@ -36,6 +36,10 @@ public class PlayerController_SpaceInvaders : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                Debug.Log("calling shoot!");
+                shoot();
+            }
+            if (Input.GetKeyDown(KeyCode.Space)) {
                 Debug.Log("calling shoot!");
                 shoot();
             }
@@ -61,7 +65,7 @@ public class PlayerController_SpaceInvaders : MonoBehaviour
     {
         if(!rocket.activeSelf)
         {
-            rocket.transform.position = new Vector3(barrel.position.x, barrel.position.y, barrel.position.z + 3f);
+            rocket.transform.position = new Vector3(barrel.position.x, barrel.position.y - 0.5f, barrel.position.z + 3f);
             rocket.SetActive(true);
         }
     }
@@ -69,7 +73,19 @@ public class PlayerController_SpaceInvaders : MonoBehaviour
     private void die()
     {
         // Insert losing stuff here - pause game and such:
+        gameManager.updateLives();
+        gameObject.SetActive(false);
+        gameManager.paused = true;
+        StartCoroutine(respawn());
     }
+
+    public IEnumerator respawn() {
+        yield return new WaitForSecondsRealtime(2);
+        gameManager.paused = false;
+        gameObject.SetActive(true);
+
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {

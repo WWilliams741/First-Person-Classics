@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 382102164878730037}
   m_Layer: 18
   m_Name: Invader3
-  m_TagString: Untagged
+  m_TagString: 40
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
