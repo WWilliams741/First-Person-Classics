@@ -75,10 +75,10 @@ public class RowManager_Script : MonoBehaviour
     {
         while (!paused) {
             if (!left) {
-                transform.position = new Vector3(transform.position.x + 0.82f, transform.position.y, transform.position.z);
+                transform.position = new Vector3(transform.position.x + (0.82f * Time.timeScale), transform.position.y, transform.position.z);
             }
             else {
-                transform.position = new Vector3(transform.position.x - 0.82f, transform.position.y, transform.position.z);
+                transform.position = new Vector3(transform.position.x - (0.82f * Time.timeScale), transform.position.y, transform.position.z);
             }
             yield return new WaitForSecondsRealtime(gameManager.waitTime);
         }
