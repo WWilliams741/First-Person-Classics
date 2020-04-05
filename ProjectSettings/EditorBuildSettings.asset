@@ -14,9 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MineSweeper.unity
     guid: 74257ccc15831bd43a622120cd890849
-  - enabled: 1
-    path: Assets/Scenes/Pac-Man.unity
-    guid: 487e47000fcf9264eb242837840493c5
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Frogger.unity
     guid: 301e950fffa04b143ab2290517122ace
@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Frogger level 2.unity
     guid: 6d84fd2fe2349dc4da2969da217fd8c4
+  - enabled: 1
+    path: Assets/Scenes/Space Invaders.unity
+    guid: d5391527ce03a3a42991fa3c492e17b9
   m_configObjects: {}

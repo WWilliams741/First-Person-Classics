@@ -32,9 +32,9 @@ public class MainMenuScript : MonoBehaviour {
         SceneManager.LoadScene("MineSweeper");
     }
 
-    public void PacMan(string data) {
-        Debug.Log("PacMan Button Clicked");
-        SceneManager.LoadScene("Pac-Man");
+    public void SpaceInvaders(string data) {
+        Debug.Log("SpaceInvaders Button Clicked");
+        SceneManager.LoadScene("Space Invaders");
     }
 
     public void Frogger(string data) {

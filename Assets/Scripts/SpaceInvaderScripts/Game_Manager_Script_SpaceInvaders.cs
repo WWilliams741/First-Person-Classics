@@ -28,6 +28,9 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     public int score;
     public bool paused = false;
 
+    private LinkedList<int> InvaderIndices;
+    private Hashtable shootingInvaders;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +39,7 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         hitRight = false;
         moveRows();
         lives = 3;
+        InvaderIndices = new LinkedList<int>();
     }
 
     // Update is called once per frame
@@ -147,6 +151,34 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         }
 
         return alive;
+    }
+
+    public void GetBottomMost()
+    {
+        InvaderIndices = new LinkedList<int>();
+        for (int i = 0; i < rowManagers[0].Invaders.Length; i++)
+        {
+            InvaderIndices.AddLast(i);
+        }
+
+        for (int i = 0; i < rowManagers.Length; i++)
+        {
+            int index = InvaderIndices.First.Value;
+            while (index < InvaderIndices.Last.Value)
+            {
+                if (rowManagers[i].Invaders[index].activeSelf)
+                {
+                    shootingInvaders.Add(index, rowManagers[i].Invaders[index]);
+                    int temp = index;
+                    index = InvaderIndices.Find(index).Next.Value;
+                    InvaderIndices.Remove(temp);
+                }
+                else
+                {
+                    index = InvaderIndices.Find(index).Next.Value;
+                }
+            }
+        }
     }
 
     public void updateWaitTime()
