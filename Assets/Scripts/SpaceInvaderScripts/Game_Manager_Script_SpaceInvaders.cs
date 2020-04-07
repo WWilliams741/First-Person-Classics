@@ -40,7 +40,15 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         moveRows();
         lives = 3;
         InvaderIndices = new LinkedList<int>();
+        shootingInvaders = new Hashtable();
+
+        GetBottomMost();
+        for (int i = 0; i < shootingInvaders.Count; i++)
+        {
+            Debug.Log(shootingInvaders[i]);
+        }
     }
+
 
     // Update is called once per frame
     void Update()
@@ -64,7 +72,7 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
             PauseMenuUI.SetActive(false);
             paused = false;
         }
-
+        
     }
     /*
     public int getLeftMost()
@@ -160,25 +168,46 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         {
             InvaderIndices.AddLast(i);
         }
+        shootingInvaders.Clear();
 
         for (int i = 0; i < rowManagers.Length; i++)
         {
             int index = InvaderIndices.First.Value;
-            while (index < InvaderIndices.Last.Value)
+            while (index <= InvaderIndices.Last.Value)
             {
-                if (rowManagers[i].Invaders[index].activeSelf)
+                try
                 {
-                    shootingInvaders.Add(index, rowManagers[i].Invaders[index]);
-                    int temp = index;
-                    index = InvaderIndices.Find(index).Next.Value;
-                    InvaderIndices.Remove(temp);
-                }
-                else
-                {
-                    index = InvaderIndices.Find(index).Next.Value;
+                    if (rowManagers[i].Invaders[index].activeSelf)
+                    {
+                        shootingInvaders.Add(index, rowManagers[i].Invaders[index].transform);
+                        int temp = index;
+                        index = InvaderIndices.Find(index).Next.Value;
+                        InvaderIndices.Remove(temp);
+                    }
+                    else
+                    {
+                        index = InvaderIndices.Find(index).Next.Value;
+                    }
+                } catch (Exception e) {
+                    if (e is NullReferenceException || e is ArgumentException)
+                    {
+                        break;
+                    }
                 }
             }
         }
+    }
+
+    public void InvadersShoot()
+    {
+        Transform trans;
+        foreach (var key in shootingInvaders.Keys)
+        {
+            break;
+            // implement random shooting here?
+        }
+
+        // column x rocket goes to trans by some offset here - set it active:
     }
 
     public void updateWaitTime()
@@ -193,17 +222,24 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     }
 
 
-    public void updateLives() {
-        if (lives == 3) {
+    public void updateLives()
+    {
+        if (lives == 3)
+        {
             lives = 2;
+            livesText.text = "Lives: " + lives.ToString();
             Life1.SetActive(false);
         }
-        else if (lives == 2) {
+        else if (lives == 2)
+        {
             lives = 1;
+            livesText.text = "Lives: " + lives.ToString();
             Life1.SetActive(false);
         }
-        else if (lives == 1) {
+        else if (lives == 1)
+        {
             lives = 0;
+            livesText.text = "Lives: " + lives.ToString();
             GameOver();
         }
 
