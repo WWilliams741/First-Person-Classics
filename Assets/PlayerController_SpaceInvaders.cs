@@ -73,17 +73,10 @@ public class PlayerController_SpaceInvaders : MonoBehaviour
     private void die()
     {
         // Insert losing stuff here - pause game and such:
+        StartCoroutine(gameManager.respawn());
         gameManager.updateLives();
         gameObject.SetActive(false);
-        gameManager.paused = true;
-        StartCoroutine(respawn());
-    }
-
-    public IEnumerator respawn() {
-        yield return new WaitForSecondsRealtime(2);
-        gameManager.paused = false;
-        gameObject.SetActive(true);
-
+        gameManager.paused = true; 
     }
 
 
@@ -91,6 +84,7 @@ public class PlayerController_SpaceInvaders : MonoBehaviour
     {
         if (other.gameObject.layer.Equals(19))
         {
+            //print("hit by enemy rockets");
             die();
         }
     }

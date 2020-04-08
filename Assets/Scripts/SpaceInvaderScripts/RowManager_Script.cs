@@ -80,7 +80,7 @@ public class RowManager_Script : MonoBehaviour
             else {
                 transform.position = new Vector3(transform.position.x - (0.82f * Time.timeScale), transform.position.y, transform.position.z);
             }
-            yield return new WaitForSecondsRealtime(gameManager.waitTime);
+            yield return new WaitForSeconds(gameManager.waitTime);
         }
         
     }

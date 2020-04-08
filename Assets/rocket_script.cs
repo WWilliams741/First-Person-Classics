@@ -7,7 +7,7 @@ public class rocket_script : MonoBehaviour
 
     [SerializeField] Rigidbody rb;
     [SerializeField] Game_Manager_Script_SpaceInvaders gameManager;
-    [SerializeField] private bool playerRocket;
+    [SerializeField] private bool playerRocket = false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,8 @@ public class rocket_script : MonoBehaviour
         }
         else
         {
-            rb.velocity = Vector3.down * 20f;
+            print("shooting enemy rocket");
+            rb.velocity = Vector3.forward * -20f;
         }
     }
 
@@ -30,16 +31,15 @@ public class rocket_script : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer.Equals(18))
-        {
+        if (other.gameObject.layer.Equals(18)) {
             Debug.Log("hit an invader, telling gameManager to update speed.");
             gameManager.updateWaitTime();
             gameObject.SetActive(false);
             gameManager.score += System.Convert.ToInt32(other.gameObject.tag);
             gameManager.updatePlayerScore();
+            gameManager.GetBottomMost();
         }
-        else if (other.gameObject.layer.Equals(20))
-        {
+        else if (other.gameObject.layer.Equals(20)|| other.gameObject.layer.Equals(9)) {
             gameObject.SetActive(false);
         }
     }

@@ -15,11 +15,15 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     //[SerializeField] private GameObject WinMenuUI;
     [SerializeField] private GameObject Life1;
     [SerializeField] private GameObject Life2;
+    [SerializeField] private GameObject player;
+    public Transform playerTrans;
     public TextMeshProUGUI PlayerScoreText;
+    [SerializeField] private GameObject EnemyRocket;
 
 
     private Coroutine[] rows;
-
+    private Transform shootTrans;
+    private List<int> closest;
     public float waitTime;
     public bool hitRight;
     private int leftMost;
@@ -54,10 +58,10 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     void Update()
     {
         if (paused) {
-            Time.timeScale = 0;
+            Time.timeScale = 0f;
         }
         else {
-            Time.timeScale = 1;
+            Time.timeScale = 1f;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) && !PauseMenuUI.activeSelf) {
@@ -71,6 +75,9 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
             Debug.Log("Un-pausing the game");
             PauseMenuUI.SetActive(false);
             paused = false;
+        }
+        if (!EnemyRocket.activeSelf) {
+            InvadersShoot();
         }
         
     }
@@ -198,17 +205,36 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         }
     }
 
-    public void InvadersShoot()
-    {
-        Transform trans;
-        foreach (var key in shootingInvaders.Keys)
-        {
-            break;
-            // implement random shooting here?
+    public void InvadersShoot() {
+        closest = new List<int>();
+        
+        foreach (var key in shootingInvaders.Keys) {
+            closest.Add((int)key);
         }
-
+        closest.Sort(SortByPosition);
+        shootTrans = (Transform)shootingInvaders[closest[0]];
+        closest.Reverse();
+        foreach (var key in closest) {
+            if (UnityEngine.Random.Range(0, 9) < 1) {
+                shootTrans = (Transform)shootingInvaders[closest[key]];
+                break;
+            }
+        }
+             
         // column x rocket goes to trans by some offset here - set it active:
+        EnemyRocket.transform.position = new Vector3(shootTrans.position.x, shootTrans.position.y, shootTrans.position.z - 2f);
+        EnemyRocket.SetActive(true);
+
     }
+
+    //comparison function for sort
+    public int SortByPosition(int invader1, int invader2) {
+        double dist1 = Mathf.Abs(((Transform)shootingInvaders[invader1]).position.x - playerTrans.position.x);
+        double dist2 = Mathf.Abs(((Transform)shootingInvaders[invader2]).position.x - playerTrans.position.x);
+        return dist1.CompareTo(dist2);
+    }
+
+
 
     public void updateWaitTime()
     {
@@ -228,7 +254,7 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         {
             lives = 2;
             livesText.text = "Lives: " + lives.ToString();
-            Life1.SetActive(false);
+            Life2.SetActive(false);
         }
         else if (lives == 2)
         {
@@ -244,6 +270,19 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         }
 
     }
+
+
+    public IEnumerator respawn() {
+        print("starting respawn");
+        player.SetActive(true);
+        print(player.activeSelf);
+        yield return new WaitForSecondsRealtime(2f);
+        paused = false;
+        print("respawning");
+        player.SetActive(true);
+
+    }
+
 
     public void GameOver() {
         paused = true;
