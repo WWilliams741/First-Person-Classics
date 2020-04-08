@@ -269,6 +269,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &17413610 stripped
@@ -282,6 +287,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
     type: 3}
   m_PrefabInstance: {fileID: 796035802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &70268677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7352211041218260989, guid: 4b436576ce6d76144954f59e81546f20,
+    type: 3}
+  m_PrefabInstance: {fileID: 8528202687330819671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &70268679 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 7786271781836473338, guid: 4b436576ce6d76144954f59e81546f20,
+    type: 3}
+  m_PrefabInstance: {fileID: 8528202687330819671}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &70305838
 GameObject:
@@ -307,7 +324,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70305838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: -10}
+  m_LocalPosition: {x: 0.5, y: 0, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1819217487}
@@ -494,6 +511,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740400926}
     m_Modifications:
+    - target: {fileID: 3390113342844750115, guid: ee20c092bad91314389db7fe227aa8f9,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 4881317060645182378, guid: ee20c092bad91314389db7fe227aa8f9,
         type: 3}
       propertyPath: m_Name
@@ -793,6 +815,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &238212813 stripped
@@ -808,6 +835,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740400926}
     m_Modifications:
+    - target: {fileID: 3390113342844750115, guid: ee20c092bad91314389db7fe227aa8f9,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 4881317060645182378, guid: ee20c092bad91314389db7fe227aa8f9,
         type: 3}
       propertyPath: m_Name
@@ -1020,6 +1052,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 738873446}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -1249,6 +1286,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740400926}
     m_Modifications:
+    - target: {fileID: 3390113342844750115, guid: ee20c092bad91314389db7fe227aa8f9,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 4881317060645182378, guid: ee20c092bad91314389db7fe227aa8f9,
         type: 3}
       propertyPath: m_Name
@@ -1589,6 +1631,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740400926}
     m_Modifications:
+    - target: {fileID: 3390113342844750115, guid: ee20c092bad91314389db7fe227aa8f9,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 4881317060645182378, guid: ee20c092bad91314389db7fe227aa8f9,
         type: 3}
       propertyPath: m_Name
@@ -1756,6 +1803,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 738873446}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -1917,6 +1969,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &428883424 stripped
@@ -2065,6 +2122,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740400926}
     m_Modifications:
+    - target: {fileID: 3390113342844750115, guid: ee20c092bad91314389db7fe227aa8f9,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 4881317060645182378, guid: ee20c092bad91314389db7fe227aa8f9,
         type: 3}
       propertyPath: m_Name
@@ -2156,6 +2218,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991341158}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -2278,6 +2345,7 @@ MonoBehaviour:
   playerTrans: {fileID: 1259393324}
   PlayerScoreText: {fileID: 1327251421}
   EnemyRocket: {fileID: 939274791}
+  spaceShip: {fileID: 70268677}
   waitTime: 0
   hitRight: 0
   lives: 0
@@ -2304,6 +2372,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991341158}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -2471,6 +2544,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &485158862 stripped
@@ -2498,6 +2576,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991341158}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -2653,6 +2736,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &538008476 stripped
@@ -3033,6 +3121,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &606709534 stripped
@@ -3280,6 +3373,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5425036291045085141}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &689841568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 9473bf090aaa04164967cdceab413088,
+    type: 3}
+  m_PrefabInstance: {fileID: 1507151936}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &695831872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8707712298013063154, guid: ee20c092bad91314389db7fe227aa8f9,
@@ -3369,6 +3468,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &716205765 stripped
@@ -3626,6 +3730,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740400926}
     m_Modifications:
+    - target: {fileID: 3390113342844750115, guid: ee20c092bad91314389db7fe227aa8f9,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 4881317060645182378, guid: ee20c092bad91314389db7fe227aa8f9,
         type: 3}
       propertyPath: m_Name
@@ -3717,6 +3826,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 738873446}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -3802,6 +3916,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740400926}
     m_Modifications:
+    - target: {fileID: 3390113342844750115, guid: ee20c092bad91314389db7fe227aa8f9,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 4881317060645182378, guid: ee20c092bad91314389db7fe227aa8f9,
         type: 3}
       propertyPath: m_Name
@@ -3887,6 +4006,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 738873446}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -4103,6 +4227,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 738873446}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -4321,6 +4450,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991341158}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -4875,6 +5009,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &920871697 stripped
@@ -5325,6 +5464,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991341158}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -5410,6 +5554,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740400926}
     m_Modifications:
+    - target: {fileID: 3390113342844750115, guid: ee20c092bad91314389db7fe227aa8f9,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 4881317060645182378, guid: ee20c092bad91314389db7fe227aa8f9,
         type: 3}
       propertyPath: m_Name
@@ -5656,6 +5805,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740400926}
     m_Modifications:
+    - target: {fileID: 3390113342844750115, guid: ee20c092bad91314389db7fe227aa8f9,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 4881317060645182378, guid: ee20c092bad91314389db7fe227aa8f9,
         type: 3}
       propertyPath: m_Name
@@ -5948,6 +6102,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &1100077902 stripped
@@ -6033,6 +6192,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &1113777839 stripped
@@ -6284,6 +6448,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991341158}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -6445,6 +6614,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &1183856278 stripped
@@ -6733,6 +6907,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &1233999437 stripped
@@ -7935,6 +8114,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &1295217971 stripped
@@ -8452,6 +8636,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &1363550409 stripped
@@ -8540,6 +8729,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 738873446}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -8695,6 +8889,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &1398619673 stripped
@@ -8849,6 +9048,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 738873446}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -8934,6 +9138,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991341158}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -9025,6 +9234,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 738873446}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -9103,6 +9317,83 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1496261196}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1507151936
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_Name
+      value: Invader Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_RootOrder
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1782384568}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
 --- !u!1001 &1546047599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9180,6 +9471,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &1546047600 stripped
@@ -9276,6 +9572,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991341158}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -9431,6 +9732,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &1592123845 stripped
@@ -9516,6 +9822,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &1613585028 stripped
@@ -9692,6 +10003,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740400926}
     m_Modifications:
+    - target: {fileID: 3390113342844750115, guid: ee20c092bad91314389db7fe227aa8f9,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 4881317060645182378, guid: ee20c092bad91314389db7fe227aa8f9,
         type: 3}
       propertyPath: m_Name
@@ -10241,6 +10557,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720733647}
   m_CullTransparentMesh: 0
+--- !u!21 &1782384568
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Explosion
+  m_Shader: {fileID: 4800000, guid: 1ffd39b3e33a04094a482b549da5c0f7, type: 3}
+  m_ShaderKeywords: OCTAVES_4 QUALITY_HIGH SCATTERING_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _3DNoise:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4648634f8231b4bf0860b6a2b4f6fadc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RampTex:
+        m_Texture: {fileID: 2800000, guid: de25a418e52274482b51702fff566bcd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Alpha: 1
+    - _Frequency: 1
+    - _Heat: 1
+    - _Radius: 0.95566505
+    - _ScrollSpeed: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _SpherePos: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &1819217487 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5143782142110439174, guid: 4b436576ce6d76144954f59e81546f20,
@@ -10385,6 +10745,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991341158}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -10540,6 +10905,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &1836636789 stripped
@@ -10555,6 +10925,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 738873446}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -10716,6 +11091,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &1907297738 stripped
@@ -10801,6 +11181,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invader1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!4 &1929173723 stripped
@@ -10816,6 +11201,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991341158}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -10901,6 +11291,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 738873446}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -11061,6 +11456,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 738873446}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -11844,6 +12244,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740400926}
     m_Modifications:
+    - target: {fileID: 3390113342844750115, guid: ee20c092bad91314389db7fe227aa8f9,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 4881317060645182378, guid: ee20c092bad91314389db7fe227aa8f9,
         type: 3}
       propertyPath: m_Name
@@ -12067,6 +12472,11 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9083033727671473442, guid: 1413a7fb424869843ab520a82e44c367,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1413a7fb424869843ab520a82e44c367, type: 3}
 --- !u!1001 &7836761663115863759
@@ -12076,6 +12486,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991341158}
     m_Modifications:
+    - target: {fileID: 2897881648728946561, guid: 621ee1458d3fb4c439b6f521c9192855,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 689841568}
     - target: {fileID: 3669963350592829533, guid: 621ee1458d3fb4c439b6f521c9192855,
         type: 3}
       propertyPath: m_Name
@@ -12214,6 +12629,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpaceShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352211041218260989, guid: 4b436576ce6d76144954f59e81546f20,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352211041218260989, guid: 4b436576ce6d76144954f59e81546f20,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722632248389835601, guid: 4b436576ce6d76144954f59e81546f20,
+        type: 3}
+      propertyPath: startPosition
+      value: 
+      objectReference: {fileID: 1819217487}
+    - target: {fileID: 7722632248389835601, guid: 4b436576ce6d76144954f59e81546f20,
+        type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 70268679}
+    - target: {fileID: 7786271781836473338, guid: 4b436576ce6d76144954f59e81546f20,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 116
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b436576ce6d76144954f59e81546f20, type: 3}

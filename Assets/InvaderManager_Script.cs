@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class InvaderManager_Script : MonoBehaviour
 {
+
+    [SerializeField] private GameObject explosion;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +24,8 @@ public class InvaderManager_Script : MonoBehaviour
     {
         if (other.gameObject.layer.Equals(19))
         {
+            explosion.SetActive(true);
+            explosion.transform.position = transform.position;
             gameObject.SetActive(false);
         }
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     public Transform playerTrans;
     public TextMeshProUGUI PlayerScoreText;
     [SerializeField] private GameObject EnemyRocket;
+    [SerializeField] private GameObject spaceShip;
 
 
     private Coroutine[] rows;
@@ -47,10 +49,8 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         shootingInvaders = new Hashtable();
 
         GetBottomMost();
-        for (int i = 0; i < shootingInvaders.Count; i++)
-        {
-            Debug.Log(shootingInvaders[i]);
-        }
+
+        StartCoroutine(spaceShipChance());
     }
 
 
@@ -234,6 +234,27 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         return dist1.CompareTo(dist2);
     }
 
+    public void spawnSpaceShip()
+    {
+        spaceShip.SetActive(true);
+    }
+
+    public IEnumerator spaceShipChance()
+    {
+        while (!paused)
+        {
+            if (Random.Range(1, 5) == 1)
+            {
+                Debug.Log("spawning the ship!");
+                spawnSpaceShip();
+            }
+            else
+            {
+                Debug.Log("NOT spawning the ship!");
+            }
+            yield return new WaitForSecondsRealtime(5f);
+        }
+    }
 
 
     public void updateWaitTime()
