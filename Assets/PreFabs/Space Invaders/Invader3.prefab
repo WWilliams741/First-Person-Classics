@@ -186,6 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 100000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+  sprite1: {fileID: 690012902709922792}
+  sprite2: {fileID: 7007597084856443921}
 --- !u!54 &382102164878730037
 Rigidbody:
   m_ObjectHideFlags: 0

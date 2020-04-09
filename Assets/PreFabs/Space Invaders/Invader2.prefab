@@ -206,6 +206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 333c4685e7cfd0b40b19b3747d89b77c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 0}
+  sprite1: {fileID: 9047830165851129072}
+  sprite2: {fileID: 4109628961009613038}
 --- !u!54 &6477009234241939720
 Rigidbody:
   m_ObjectHideFlags: 0

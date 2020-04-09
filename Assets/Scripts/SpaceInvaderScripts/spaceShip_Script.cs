@@ -15,12 +15,12 @@ public class spaceShip_Script : MonoBehaviour
         if (rand == 1)
         {
             side = 1;
-            transform.position = new Vector3(.5f, startPosition.position.y, 40f);
+            transform.position = new Vector3(.5f, startPosition.position.y, 39f);
         }
         else
         {
             side = -1;
-            transform.position = new Vector3(49.5f, startPosition.position.y, 40f);
+            transform.position = new Vector3(49.5f, startPosition.position.y, 39f);
         }
 
         rb.velocity = Vector3.right * 5f * side;

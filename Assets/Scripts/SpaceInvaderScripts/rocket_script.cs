@@ -19,7 +19,7 @@ public class rocket_script : MonoBehaviour
         else
         {
             print("shooting enemy rocket");
-            rb.velocity = Vector3.forward * -20f;
+            rb.velocity = Vector3.forward * -10f;
         }
     }
 
@@ -39,7 +39,7 @@ public class rocket_script : MonoBehaviour
             gameManager.updatePlayerScore();
             gameManager.GetBottomMost();
         }
-        else if (other.gameObject.layer.Equals(20)|| other.gameObject.layer.Equals(9)) {
+        else if (other.gameObject.layer.Equals(20)|| other.gameObject.layer.Equals(9) || other.gameObject.layer.Equals(19)) {
             gameObject.SetActive(false);
         }
     }

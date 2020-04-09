@@ -21,7 +21,8 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     public TextMeshProUGUI PlayerScoreText;
     [SerializeField] private GameObject EnemyRocket;
     [SerializeField] private GameObject spaceShip;
-
+    [SerializeField] private Camera primaryCam;
+    [SerializeField] private Camera secondaryCam;
 
     private Coroutine[] rows;
     private Transform shootTrans;
@@ -51,12 +52,15 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         GetBottomMost();
 
         StartCoroutine(spaceShipChance());
+        secondaryCam.depth = primaryCam.depth - 1;
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        
+        secondaryCam.transform.position = new Vector3(primaryCam.transform.position.x, secondaryCam.transform.position.y, secondaryCam.transform.position.z);
         if (paused) {
             Time.timeScale = 0f;
         }
@@ -241,18 +245,18 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
 
     public IEnumerator spaceShipChance()
     {
-        while (!paused)
-        {
-            if (Random.Range(1, 5) == 1)
-            {
-                Debug.Log("spawning the ship!");
-                spawnSpaceShip();
+        while (true) {
+            if (!paused) {
+                int rand = Random.Range(1, 6);
+                if ( rand == 1) {
+                    Debug.Log("spawning the ship!");
+                    spawnSpaceShip();
+                }
+                else {
+                    Debug.Log("NOT spawning the ship! " + rand);
+                }
+                yield return new WaitForSeconds(10f);
             }
-            else
-            {
-                Debug.Log("NOT spawning the ship!");
-            }
-            yield return new WaitForSecondsRealtime(5f);
         }
     }
 
@@ -292,7 +296,11 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
 
     }
 
+    public void respawn1() {
+        if(lives>1)
+        StartCoroutine(respawn());
 
+    }
     public IEnumerator respawn() {
         print("starting respawn");
         player.SetActive(true);

@@ -76,9 +76,11 @@ public class RowManager_Script : MonoBehaviour
         while (!paused) {
             if (!left) {
                 transform.position = new Vector3(transform.position.x + (0.82f * Time.timeScale), transform.position.y, transform.position.z);
+                changeSprite();
             }
             else {
                 transform.position = new Vector3(transform.position.x - (0.82f * Time.timeScale), transform.position.y, transform.position.z);
+                changeSprite();
             }
             yield return new WaitForSeconds(gameManager.waitTime);
         }
@@ -88,5 +90,12 @@ public class RowManager_Script : MonoBehaviour
     public void moveDown()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 2f);
+    }
+
+    public void changeSprite() {
+        for (int i = 0; i < Invaders.Length; i++) {
+            Invaders[i].GetComponent<InvaderManager_Script>().changeSprite();
+        }
+
     }
 }

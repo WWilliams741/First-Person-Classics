@@ -288,12 +288,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 796035802}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &70268677 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7352211041218260989, guid: 4b436576ce6d76144954f59e81546f20,
-    type: 3}
-  m_PrefabInstance: {fileID: 8528202687330819671}
-  m_PrefabAsset: {fileID: 0}
 --- !u!54 &70268679 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 7786271781836473338, guid: 4b436576ce6d76144954f59e81546f20,
@@ -324,7 +318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70305838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 40}
+  m_LocalPosition: {x: 0.5, y: 0, z: 38.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1819217487}
@@ -2345,7 +2339,9 @@ MonoBehaviour:
   playerTrans: {fileID: 1259393324}
   PlayerScoreText: {fileID: 1327251421}
   EnemyRocket: {fileID: 939274791}
-  spaceShip: {fileID: 70268677}
+  spaceShip: {fileID: 70305838}
+  primaryCam: {fileID: 962194934}
+  secondaryCam: {fileID: 1711432774}
   waitTime: 0
   hitRight: 0
   lives: 0
@@ -3379,6 +3375,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1507151936}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &689841573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689841568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4633b8b97c6a17f4a83c8f87e41eb3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &695831872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8707712298013063154, guid: ee20c092bad91314389db7fe227aa8f9,
@@ -7393,6 +7401,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1977418479011910, guid: 3b95bec82dae4484eafd516e73cc2623, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 1988432044653830, guid: 3b95bec82dae4484eafd516e73cc2623, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -7447,7 +7459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4897523123480880, guid: 3b95bec82dae4484eafd516e73cc2623, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4897523123480880, guid: 3b95bec82dae4484eafd516e73cc2623, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7497,6 +7509,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: MainCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125430551976785559, guid: 3b95bec82dae4484eafd516e73cc2623,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8753564943358549830, guid: 3b95bec82dae4484eafd516e73cc2623,
         type: 3}
@@ -9362,7 +9379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10327,11 +10344,11 @@ GameObject:
   - component: {fileID: 1711432773}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1711432773
 AudioListener:
   m_ObjectHideFlags: 0
@@ -10394,7 +10411,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 22.47, y: 0, z: 0}
 --- !u!1 &1720489725 stripped
 GameObject:
@@ -11594,7 +11611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4177039449032724, guid: 0c8cf5f4899b6704a916c21118bfd186, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4177039449032724, guid: 0c8cf5f4899b6704a916c21118bfd186, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

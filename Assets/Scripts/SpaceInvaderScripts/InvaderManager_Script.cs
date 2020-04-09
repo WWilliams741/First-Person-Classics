@@ -6,6 +6,8 @@ public class InvaderManager_Script : MonoBehaviour
 {
 
     [SerializeField] private GameObject explosion;
+    [SerializeField] private GameObject sprite1;
+    [SerializeField] private GameObject sprite2;
 
 
     // Start is called before the first frame update
@@ -29,4 +31,10 @@ public class InvaderManager_Script : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    public void changeSprite() {
+        sprite1.SetActive(!sprite1.activeSelf);
+        sprite2.SetActive(!sprite2.activeSelf);
+    }
+
 }

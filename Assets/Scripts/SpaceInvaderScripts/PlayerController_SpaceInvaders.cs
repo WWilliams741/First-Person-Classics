@@ -73,7 +73,7 @@ public class PlayerController_SpaceInvaders : MonoBehaviour
     private void die()
     {
         // Insert losing stuff here - pause game and such:
-        StartCoroutine(gameManager.respawn());
+        gameManager.respawn1();
         gameManager.updateLives();
         gameObject.SetActive(false);
         gameManager.paused = true; 
