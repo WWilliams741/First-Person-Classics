@@ -67,13 +67,13 @@ public class RowManager_Script : MonoBehaviour
         return alive;
     }
 
-    /*
+    
     public void killInvader(int i)
     {
         Invaders[i].SetActive(false);
-        alive--;
+        
     }
-    */
+    
 
     public void resetInvaders()
     {
