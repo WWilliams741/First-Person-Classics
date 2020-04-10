@@ -2347,6 +2347,7 @@ MonoBehaviour:
   lives: 0
   score: 0
   paused: 0
+  victoryCounter: 0
 --- !u!4 &465098550
 Transform:
   m_ObjectHideFlags: 0
