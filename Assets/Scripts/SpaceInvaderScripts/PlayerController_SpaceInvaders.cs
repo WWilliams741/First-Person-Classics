@@ -9,11 +9,15 @@ public class PlayerController_SpaceInvaders : MonoBehaviour
     [SerializeField] Transform barrel;
     [SerializeField] GameObject rocket;
     [SerializeField] Game_Manager_Script_SpaceInvaders gameManager;
+    [SerializeField] soundManager_spaceInvaders soundManager;
     [SerializeField] GameObject explosion;
+
+    private Vector3 startPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        startPosition = rb.position;
         stop();
     }
 
@@ -66,6 +70,7 @@ public class PlayerController_SpaceInvaders : MonoBehaviour
     {
         if(!rocket.activeSelf)
         {
+            soundManager.playSound("rocketFire");
             rocket.transform.position = new Vector3(barrel.position.x, barrel.position.y - 0.5f, barrel.position.z + 3f);
             rocket.SetActive(true);
         }
@@ -76,11 +81,17 @@ public class PlayerController_SpaceInvaders : MonoBehaviour
         // Insert losing stuff here - pause game and such:
         explosion.transform.position = this.transform.position;
         explosion.SetActive(true);
+        soundManager.playSound("playerDeath");
 
         gameManager.respawn1();
         gameManager.updateLives();
         gameObject.SetActive(false);
         gameManager.paused = true; 
+    }
+
+    public void resetPosition()
+    {
+        rb.position = startPosition;
     }
 
 

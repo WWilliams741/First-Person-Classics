@@ -8,8 +8,10 @@ public class RowManager_Script : MonoBehaviour
     public GameObject[] Invaders;
     [SerializeField] private Game_Manager_Script_SpaceInvaders gameManager;
     [SerializeField] private Transform position;
+    [SerializeField] soundManager_spaceInvaders soundManager;
 
     private Vector3 startPosition;
+    private int moveCounter;
 
     public bool paused;
     public bool left;
@@ -17,7 +19,9 @@ public class RowManager_Script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        moveCounter = 0;
         startPosition = position.position;
+        startPosition.x = 0f;
         //alive = Invaders.Length;
         left = false;
     }
@@ -77,6 +81,7 @@ public class RowManager_Script : MonoBehaviour
 
     public void resetInvaders()
     {
+        moveCounter = 0;
         for (int i = 0; i < Invaders.Length; i++)
         {
             Invaders[i].SetActive(true);
@@ -96,6 +101,25 @@ public class RowManager_Script : MonoBehaviour
                 transform.position = new Vector3(transform.position.x - (0.82f * Time.timeScale), transform.position.y, transform.position.z);
                 changeSprite();
             }
+            
+            if (moveCounter == 0)
+            {
+                soundManager.playSound("InvadersMove1");
+            }
+            else if (moveCounter == 1)
+            {
+                soundManager.playSound("InvadersMove2");
+            }
+            else if (moveCounter == 2)
+            {
+                soundManager.playSound("InvadersMove3");
+            }
+            else if (moveCounter == 3)
+            {
+                soundManager.playSound("InvadersMove4");
+            }
+            moveCounter = (moveCounter + 1) % 4;
+
             yield return new WaitForSeconds(gameManager.waitTime);
         }
         

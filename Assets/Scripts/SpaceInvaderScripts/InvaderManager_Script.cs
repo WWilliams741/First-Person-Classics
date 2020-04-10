@@ -8,6 +8,7 @@ public class InvaderManager_Script : MonoBehaviour
     [SerializeField] private GameObject explosion;
     [SerializeField] private GameObject sprite1;
     [SerializeField] private GameObject sprite2;
+    [SerializeField] private soundManager_spaceInvaders soundManager;
 
 
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class InvaderManager_Script : MonoBehaviour
         {
             explosion.SetActive(true);
             explosion.transform.position = transform.position;
+            soundManager.playSound("enemyExplosion");
             gameObject.SetActive(false);
         }
     }

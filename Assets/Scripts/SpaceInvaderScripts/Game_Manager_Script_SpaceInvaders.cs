@@ -23,7 +23,10 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     [SerializeField] private GameObject spaceShip;
     [SerializeField] private Camera primaryCam;
     [SerializeField] private Camera secondaryCam;
+    [SerializeField] private BarrierController_script[] barriers;
+    [SerializeField] private soundManager_spaceInvaders soundManager;
 
+    private Vector3 playerStart;
     private Coroutine[] rows;
     private Transform shootTrans;
     private List<int> closest;
@@ -42,6 +45,7 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerStart = playerTrans.position;
         victoryCounter = 0;
         updateWaitTime();
         rows = new Coroutine[rowManagers.Length];
@@ -182,8 +186,21 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
 
     public void winRound()
     {
+
+        for (int i = 0; i < rows.Length; i++)
+        {
+            StopCoroutine(rows[i]);
+        }
+
+        EnemyRocket.SetActive(false);
+        playerTrans.position = playerStart;
+        for (int b = 0; b < barriers.Length; b++)
+        {
+            barriers[b].resetCubes();
+        }
+
         victoryCounter++;
-        if (victoryCounter <= 5)
+        if (victoryCounter < 6)
         {
             resetInvaders();
             for (int i = 0; i < victoryCounter; i++)
@@ -194,9 +211,19 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         }
         else
         {
-            Debug.Log("You have killed them waaaaaay too much, let them live for a change will ya!");
+            resetInvaders();
+            for (int i = 0; i < 5; i++)
+            {
+                Debug.Log("moving row down, but they can't go any further!");
+                moveRowsDown();
+            }
         }
         updateWaitTime();
+
+        for (int i = 0; i < rows.Length; i++)
+        {
+            rows[i] = StartCoroutine(rowManagers[i].move());
+        }
     }
 
     public void moveRowsDown() {
@@ -316,10 +343,11 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     public void updateWaitTime()
     {
         int totalAlive = getTotalAlive();
+        Debug.Log("totalalive: " + totalAlive);
 
         waitTime =  Mathf.Log(totalAlive, 10f) + .25f;
 
-        if (totalAlive == 0)
+        if (totalAlive <= 0)
         {
             Debug.Log("you have won the round!");
             winRound();

@@ -945,6 +945,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1310371074006314684}
+  - component: {fileID: 1665806168866121089}
   m_Layer: 20
   m_Name: Barrier
   m_TagString: Untagged
@@ -983,6 +984,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1665806168866121089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6404670761954775203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a41db6e460e4df4f8755c1db458fc79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubes:
+  - {fileID: 4724737183582028790}
+  - {fileID: 7135093268421949599}
+  - {fileID: 5194691530245021694}
+  - {fileID: 2712775061811892888}
+  - {fileID: 9138982862014171359}
+  - {fileID: 6820733625843567371}
+  - {fileID: 8488616436923390442}
+  - {fileID: 4634478216558433851}
+  - {fileID: 6950410604853596254}
+  - {fileID: 1845073085973657644}
+  - {fileID: 7349193751712453280}
+  - {fileID: 8751067789534101814}
+  - {fileID: 3240199660199419770}
+  - {fileID: 1601493419169852009}
+  - {fileID: 189422144086068893}
+  - {fileID: 4795224654124980765}
+  - {fileID: 7136852180815982586}
 --- !u!1 &6820733625843567371
 GameObject:
   m_ObjectHideFlags: 0

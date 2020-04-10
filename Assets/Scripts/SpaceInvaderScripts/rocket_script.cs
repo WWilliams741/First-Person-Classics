@@ -26,7 +26,7 @@ public class rocket_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //rb.velocity = Vector3.forward * 20f;
+
     }
 
     private void OnTriggerEnter(Collider other)
