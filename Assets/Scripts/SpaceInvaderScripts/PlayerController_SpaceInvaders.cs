@@ -9,6 +9,7 @@ public class PlayerController_SpaceInvaders : MonoBehaviour
     [SerializeField] Transform barrel;
     [SerializeField] GameObject rocket;
     [SerializeField] Game_Manager_Script_SpaceInvaders gameManager;
+    [SerializeField] GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +74,9 @@ public class PlayerController_SpaceInvaders : MonoBehaviour
     private void die()
     {
         // Insert losing stuff here - pause game and such:
+        explosion.transform.position = this.transform.position;
+        explosion.SetActive(true);
+
         gameManager.respawn1();
         gameManager.updateLives();
         gameObject.SetActive(false);

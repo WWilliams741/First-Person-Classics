@@ -13,6 +13,7 @@ public class explosion_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Debug.Log("starting coroutine to reset self!");
         StartCoroutine(reset());
     }

@@ -81,6 +81,7 @@ Shader "Explosion" {
 			float _Frequency;
 			float _ScrollSpeed;
 			float _Alpha;
+			float _timeU = 0;
 	
 			struct v2f {
 				float4 vertex : SV_POSITION;
@@ -108,7 +109,7 @@ Shader "Explosion" {
 			float fbm (float3 p) {
 				p *= _Frequency;
 				float v = 0;
-				float4 offset = _Time * _ScrollSpeed;
+				float4 offset = _timeU * _ScrollSpeed;
 				v += noise(p + offset.y);
 #if OCTAVES_2 | OCTAVES_3 | OCTAVES_4 | OCTAVES_5
 				p *= 2;

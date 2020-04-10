@@ -8,14 +8,17 @@ public class RowManager_Script : MonoBehaviour
     public GameObject[] Invaders;
     [SerializeField] private Game_Manager_Script_SpaceInvaders gameManager;
     [SerializeField] private Transform position;
-    private int alive;
+
+    private Vector3 startPosition;
+
     public bool paused;
     public bool left;
 
     // Start is called before the first frame update
     void Start()
     {
-        alive = Invaders.Length;
+        startPosition = position.position;
+        //alive = Invaders.Length;
         left = false;
     }
 
@@ -53,14 +56,24 @@ public class RowManager_Script : MonoBehaviour
 
     public int getAlive()
     {
+        int alive = 0;
+        for (int i = 0; i < Invaders.Length; i++)
+        {
+            if (Invaders[i].activeSelf)
+            {
+                alive++;
+            }
+        }
         return alive;
     }
 
+    /*
     public void killInvader(int i)
     {
         Invaders[i].SetActive(false);
         alive--;
     }
+    */
 
     public void resetInvaders()
     {
@@ -68,7 +81,8 @@ public class RowManager_Script : MonoBehaviour
         {
             Invaders[i].SetActive(true);
         }
-        alive = Invaders.Length;
+        transform.position = startPosition;
+        Debug.Log("moving back to start postion: " + startPosition);
     }
 
     public IEnumerator move()

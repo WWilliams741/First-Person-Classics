@@ -11,7 +11,7 @@ public class spaceShip_Script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int rand = Random.Range(1, 2);
+        int rand = Random.Range(1, 3);
         if (rand == 1)
         {
             side = 1;

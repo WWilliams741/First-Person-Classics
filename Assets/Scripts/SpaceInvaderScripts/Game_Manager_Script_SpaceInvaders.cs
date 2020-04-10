@@ -34,6 +34,7 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     public int lives;
     public int score;
     public bool paused = false;
+    public int victoryCounter;
 
     private LinkedList<int> InvaderIndices;
     private Hashtable shootingInvaders;
@@ -41,6 +42,7 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        victoryCounter = 0;
         updateWaitTime();
         rows = new Coroutine[rowManagers.Length];
         hitRight = false;
@@ -59,7 +61,9 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        Shader.SetGlobalFloat("_timeU", Time.unscaledTime);
+
         secondaryCam.transform.position = new Vector3(primaryCam.transform.position.x, secondaryCam.transform.position.y, secondaryCam.transform.position.z);
         if (paused) {
             Time.timeScale = 0f;
@@ -83,7 +87,6 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         if (!EnemyRocket.activeSelf) {
             InvadersShoot();
         }
-        
     }
     /*
     public int getLeftMost()
@@ -152,12 +155,38 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         }
     }*/
 
+    public void resetInvaders()
+    {
+        for (int i = 0; i < rowManagers.Length; i++)
+        {
+            rowManagers[i].resetInvaders();
+        }
+    }
+
+    public void winRound()
+    {
+        victoryCounter++;
+        if (victoryCounter <= 5)
+        {
+            resetInvaders();
+            for (int i = 0; i < victoryCounter; i++)
+            {
+                Debug.Log("moving rows down " + victoryCounter + " times.");
+                moveRowsDown();
+            }
+        }
+        else
+        {
+            Debug.Log("You have killed them waaaaaay too much, let them live for a change will ya!");
+        }
+    }
+
     public void moveRowsDown() {
 
 
-        for (int i = 0; i < rowManagers.Length; i++)
+        for (int j = 0; j < rowManagers.Length; j++)
         {
-            rowManagers[i].moveDown();
+            rowManagers[j].moveDown();
         }
     }
 
@@ -212,23 +241,28 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     public void InvadersShoot() {
         closest = new List<int>();
         
-        foreach (var key in shootingInvaders.Keys) {
-            closest.Add((int)key);
-        }
-        closest.Sort(SortByPosition);
-        shootTrans = (Transform)shootingInvaders[closest[0]];
-        closest.Reverse();
-        foreach (var key in closest) {
-            if (UnityEngine.Random.Range(0, 9) < 1) {
-                shootTrans = (Transform)shootingInvaders[closest[key]];
-                break;
+        if (getTotalAlive() > 0)
+        {
+            foreach (var key in shootingInvaders.Keys)
+            {
+                closest.Add((int)key);
             }
-        }
-             
-        // column x rocket goes to trans by some offset here - set it active:
-        EnemyRocket.transform.position = new Vector3(shootTrans.position.x, shootTrans.position.y, shootTrans.position.z - 2f);
-        EnemyRocket.SetActive(true);
+            closest.Sort(SortByPosition);
+            shootTrans = (Transform)shootingInvaders[closest[0]];
+            closest.Reverse();
+            foreach (var key in closest)
+            {
+                if (UnityEngine.Random.Range(0, 9) < 1)
+                {
+                    shootTrans = (Transform)shootingInvaders[closest[key]];
+                    break;
+                }
+            }
 
+            // column x rocket goes to trans by some offset here - set it active:
+            EnemyRocket.transform.position = new Vector3(shootTrans.position.x, shootTrans.position.y, shootTrans.position.z - 2f);
+            EnemyRocket.SetActive(true);
+        }
     }
 
     //comparison function for sort
@@ -266,6 +300,12 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         int totalAlive = getTotalAlive();
 
         waitTime =  Mathf.Log(totalAlive, 10f) + .25f;
+
+        if (totalAlive == 0)
+        {
+            Debug.Log("you have won the round!");
+            winRound();
+        }
     }
     public void updatePlayerScore() {
         PlayerScoreText.text = "Score: " + score.ToString();
