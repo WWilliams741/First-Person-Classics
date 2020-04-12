@@ -13,22 +13,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 change;
     [SerializeField] private GameObject player;
     //private string prevScene;
-    bool created;
+    
 
     [SerializeField] private GameObject PauseMenuUI;
 
-    void Awake()
-    {
-        if (!created)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            created = true;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
 
     // Start is called before the first frame update
     void Start()

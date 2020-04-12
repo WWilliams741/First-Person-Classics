@@ -15,6 +15,9 @@ public class MineSweeperGameController : MonoBehaviour {
     [SerializeField] GameObject LoseMenu;
     [SerializeField] TextMeshProUGUI WinCount;
     [SerializeField] TextMeshProUGUI LoseCount;
+    [SerializeField] GameObject scoreInputMenu;
+    [SerializeField] TextMeshProUGUI inputPanelScore;
+    [SerializeField] TMP_InputField nameInput;
 
     [SerializeField] GameObject Explosion;
     [SerializeField] SoundManagerScriptMineSweeper soundManager;
@@ -28,6 +31,7 @@ public class MineSweeperGameController : MonoBehaviour {
     public int bombCount;
     private bool firstClick;
     public bool paused;
+    private bool gameEnd;
     private bool lost;
 
 
@@ -51,6 +55,7 @@ public class MineSweeperGameController : MonoBehaviour {
         Time.timeScale = 0;
         firstClick = false;
         paused = true;
+        gameEnd = false;
         lost = false;
     }
 
@@ -66,26 +71,49 @@ public class MineSweeperGameController : MonoBehaviour {
 
         if (revealedTiles == (boardSize * boardSize) - bombCount) {
             //win game
-            WinMenu.SetActive(true);
-            WinCount.text = "You uncovered " + revealedTiles + " tiles!";
-
+            Explosion.SetActive(true);
+            paused = true;
+            gameEnd = true;
+            Time.timeScale = 0;
+            scoreInputMenu.SetActive(true);
+            inputPanelScore.text = "You uncovered " + revealedTiles + " tiles!";
+            
         }
 
 
     }
+
+   
 
     public void LoseGame(Transform tileLocation) {
         soundManager.playSound("kaboom");
         Explosion.transform.position = tileLocation.position;
         Explosion.SetActive(true);
         StartCoroutine(resetExplosion());
-
-        LoseMenu.SetActive(true);
         paused = true;
+        gameEnd = true;
         lost = true;
         Time.timeScale = 0;
-        LoseCount.text = "You uncovered " + revealedTiles + " tiles!";
+        scoreInputMenu.SetActive(true);
+        inputPanelScore.text = "You uncovered " + revealedTiles + " tiles!";
     }
+    
+    public void menuOpen() {
+        PersistantGameManager.Instance.addPlayer(nameInput.text, revealedTiles);
+        scoreInputMenu.SetActive(false);
+        if (lost) {
+            
+            LoseMenu.SetActive(true);
+            LoseCount.text = "You uncovered " + revealedTiles + " tiles!";
+        }
+        else {
+            WinMenu.SetActive(true);
+            WinCount.text = "You uncovered " + revealedTiles + " tiles!";
+        }
+    }
+
+
+
 
     public void checkTile(int xCord, int zCord) {
         if(!paused)
@@ -109,8 +137,7 @@ public class MineSweeperGameController : MonoBehaviour {
             }
         }
     }
-
-
+    
     public void checkTileIgnoreFlag(int xCord, int zCord) {
         int value = bombArray[xCord, zCord];
         Debug.Log("revealing tile at (" + xCord + ", " + zCord + ") with value: " + value + ", " + (xCord * 24 + zCord));
@@ -119,9 +146,7 @@ public class MineSweeperGameController : MonoBehaviour {
             revealNeighbors(xCord, zCord);
         }
     }
-
-
-
+       
     private void generateBoard(int xCord, int zCord) {
         //checks size of board then assigns the amount of bombs accordingly
         bombCount = boardSize == 10 ? 10 : boardSize == 18 ? 40 : boardSize == 24 ? 100 : boardSize * 3;
@@ -237,19 +262,18 @@ public class MineSweeperGameController : MonoBehaviour {
 
 
     }
-
-
+    
 
     public void goToMainMenu()
     {
+     
         SceneManager.LoadScene("Main Menu");
     }
     public void restart() {
         SceneManager.LoadScene("MineSweeper");
 
     }
-
-
+    
     public void QuitGame(string a) {
         Debug.Log("Quit Game Button Clicked");
 
@@ -331,14 +355,14 @@ public class MineSweeperGameController : MonoBehaviour {
 
     private void un_Pause()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !DifficultyMenu.activeSelf && !lost)
+        if(Input.GetKeyDown(KeyCode.Escape) && !DifficultyMenu.activeSelf && !gameEnd)
         {
             Debug.Log("Pausing the game");
             DifficultyMenu.SetActive(true);
             Time.timeScale = 0;
             paused = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && DifficultyMenu.activeSelf && !lost)
+        else if (Input.GetKeyDown(KeyCode.Escape) && DifficultyMenu.activeSelf && !gameEnd)
         {
             Debug.Log("Un-pausing the game");
             DifficultyMenu.SetActive(false);

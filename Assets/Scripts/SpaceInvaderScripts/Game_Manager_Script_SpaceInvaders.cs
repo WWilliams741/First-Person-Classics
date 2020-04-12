@@ -407,10 +407,10 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
 
     public void goToMainMenu() {
         SceneManager.LoadScene("Main Menu");
+
     }
     public void restart() {
         SceneManager.LoadScene("Space Invaders");
-
     }
 
 
