@@ -4,7 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PersistantGameManager : MonoBehaviour {
-    List<player> highScores = new List<player>();
+    List<player> highScoresMS = new List<player>(); //minesweeper
+    List<player> highScoresFrogger = new List<player>(); //frogger
+    List<player> highScoresSI = new List<player>(); //space invaders
+    List<player> highScoresPong = new List<player>(); //pong
+
+
 
     private static PersistantGameManager _instance;
 
@@ -24,7 +29,7 @@ public class PersistantGameManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         SceneManager.LoadScene(1);
-
+        /*
         highScores.Add(new player("Mahesh Chand", 35));
         highScores.Add(new player("Mike Gold", 25));
         highScores.Add(new player("Praveen Kumar", 29));
@@ -35,7 +40,7 @@ public class PersistantGameManager : MonoBehaviour {
         foreach (player x in highScores) {
             print(x.name + " " + x.score);
 
-        }
+        }*/
 
     }
     public void Awake() {
@@ -47,13 +52,27 @@ public class PersistantGameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        Shader.SetGlobalFloat("_timeU", Time.unscaledTime);
 
     }
 
-    public void addPlayer(string _name, int _score) {
-
+    //TODO add logic for top 5
+    public void addPlayerMineSweeper(string _name, int _score) {
+        highScoresMS.Add(new player(_name, _score));
+        highScoresMS.Sort();
     }
-
+    public void addPlayerFrogger(string _name, int _score) {
+        highScoresFrogger.Add(new player(_name, _score));
+        highScoresFrogger.Sort();
+    }
+    public void addPlayerSpaceInvaders(string _name, int _score) {
+        highScoresSI.Add(new player(_name, _score));
+        highScoresSI.Sort();
+    }
+    public void addPlayerPong(string _name, int _score) {
+        highScoresPong.Add(new player(_name, _score));
+        highScoresPong.Sort();
+    }
 
 
 }

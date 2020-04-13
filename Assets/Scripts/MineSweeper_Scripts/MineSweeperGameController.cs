@@ -99,7 +99,7 @@ public class MineSweeperGameController : MonoBehaviour {
     }
     
     public void menuOpen() {
-        PersistantGameManager.Instance.addPlayer(nameInput.text, revealedTiles);
+        PersistantGameManager.Instance.addPlayerMineSweeper(nameInput.text, revealedTiles);
         scoreInputMenu.SetActive(false);
         if (lost) {
             

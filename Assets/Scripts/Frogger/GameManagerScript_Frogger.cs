@@ -16,10 +16,18 @@ public class GameManagerScript_Frogger : MonoBehaviour
     [SerializeField] private GameObject Life2;
     [SerializeField] private RectTransform Timer;
     [SerializeField] FroggerController froggerController;
+
+    [SerializeField] GameObject scoreInputMenu;
+    [SerializeField] TextMeshProUGUI inputPanelScore;
+    [SerializeField] TMP_InputField nameInput;
+    private bool lost = false;
+    private bool gameOver = false;
+
     public int goalCount;
     public bool paused = false;
     public float timerTotal;
     public int ExtraLives;
+   
 
     // Start is called before the first frame update
     void Start()    {
@@ -34,14 +42,14 @@ public class GameManagerScript_Frogger : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !PauseMenuUI.activeSelf) {
+        if (Input.GetKeyDown(KeyCode.Escape) && !PauseMenuUI.activeSelf && !scoreInputMenu.activeSelf) {
             Debug.Log("Pausing the game");
             PauseMenuUI.SetActive(true);
             paused = true;
-            //TO DO add functionality to pause cars and interupt movement
+            
 
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && PauseMenuUI.activeSelf) {
+        else if (Input.GetKeyDown(KeyCode.Escape) && PauseMenuUI.activeSelf && !gameOver) {
             Debug.Log("Un-pausing the game");
             PauseMenuUI.SetActive(false);
             paused = false;
@@ -71,7 +79,8 @@ public class GameManagerScript_Frogger : MonoBehaviour
                 SceneManager.LoadScene("Frogger level 2");
             else {
                 paused = true;
-                WinMenuUI.SetActive(true);
+                gameOver = true;
+                scoreInputMenu.SetActive(true);
             }
         }
     }
@@ -131,10 +140,29 @@ public class GameManagerScript_Frogger : MonoBehaviour
         }
         else if (ExtraLives == 0) {
             paused = true;
-            LoseMenuUI.SetActive(true);
+            gameOver = true;
+            lost = true;
+            //LoseMenuUI.SetActive(true);
+            scoreInputMenu.SetActive(true);
+
         }
 
     }
+
+    public void menuOpen() {
+        PersistantGameManager.Instance.addPlayerFrogger(nameInput.text, playerScore);
+        scoreInputMenu.SetActive(false);
+        if (lost) {
+
+            LoseMenuUI.SetActive(true);
+           
+        }
+        else {
+            WinMenuUI.SetActive(true);
+           
+        }
+    }
+
 
     public void restart() {
         /*

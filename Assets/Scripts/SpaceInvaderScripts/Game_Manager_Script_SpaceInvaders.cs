@@ -26,6 +26,12 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     [SerializeField] private BarrierController_script[] barriers;
     [SerializeField] private soundManager_spaceInvaders soundManager;
 
+    [SerializeField] GameObject scoreInputMenu;
+    [SerializeField] TextMeshProUGUI inputPanelScore;
+    [SerializeField] TMP_InputField nameInput;
+    private bool gameEnd = false;
+
+
     private Vector3 playerStart;
     private Coroutine[] rows;
     private Transform shootTrans;
@@ -66,7 +72,7 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     void Update()
     {
 
-        Shader.SetGlobalFloat("_timeU", Time.unscaledTime);
+       
 
         secondaryCam.transform.position = new Vector3(primaryCam.transform.position.x, secondaryCam.transform.position.y, secondaryCam.transform.position.z);
         if (paused) {
@@ -76,14 +82,14 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
             Time.timeScale = 1f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !PauseMenuUI.activeSelf) {
+        if (Input.GetKeyDown(KeyCode.Escape) && !PauseMenuUI.activeSelf && !scoreInputMenu.activeSelf) {
             Debug.Log("Pausing the game");
             PauseMenuUI.SetActive(true);
             paused = true;
-            //TO DO add functionality to pause cars and interupt movement
+            
 
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && PauseMenuUI.activeSelf) {
+        else if (Input.GetKeyDown(KeyCode.Escape) && PauseMenuUI.activeSelf && !gameEnd) {
             Debug.Log("Un-pausing the game");
             PauseMenuUI.SetActive(false);
             paused = false;
@@ -377,9 +383,15 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         {
             lives = 0;
             livesText.text = "Lives: " + lives.ToString();
-            GameOver();
+            gameOver();            
         }
 
+    }
+
+    public void gameOver() {
+        gameEnd = true;
+        paused = true;
+        scoreInputMenu.SetActive(true);
     }
 
     public void respawn1() {
@@ -399,10 +411,11 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     }
 
 
-    public void GameOver() {
-        paused = true;
-        //game over menu
+    public void menuOpen() {
+        PersistantGameManager.Instance.addPlayerSpaceInvaders(nameInput.text, score);
+        scoreInputMenu.SetActive(false);
         LoseMenuUI.SetActive(true);
+        
     }
 
     public void goToMainMenu() {

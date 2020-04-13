@@ -12,12 +12,13 @@ public class Enemy_AI : MonoBehaviour
 
     float yOfSatisfaction;
     float maxSpeed;
+    float rate;
 
-    enum Difficulty
+    public enum Difficulty
     {
-        easy,
-        medium,
-        hard
+        easy = 0,
+        medium = 1,
+        hard = 2
     };
 
 
@@ -30,17 +31,20 @@ public class Enemy_AI : MonoBehaviour
         if (difficulty.Equals(Difficulty.easy))
         {
             maxSpeed = 5f;
-            StartCoroutine(addPrecision(1f));
+            StartCoroutine(addPrecision());
+            rate = 1f;
         }
         else if (difficulty.Equals(Difficulty.medium))
         {
             maxSpeed = 7f;
-            StartCoroutine(addPrecision(2f));
+            StartCoroutine(addPrecision());
+            rate = 2f;
         }
         else if (difficulty.Equals(Difficulty.hard))
         {
             maxSpeed = 9f;
-            StartCoroutine(addPrecision(3f));
+            StartCoroutine(addPrecision());
+            rate = 3f;
         }
         else
         {
@@ -65,8 +69,28 @@ public class Enemy_AI : MonoBehaviour
         {
             stop();
         }
+        if (difficulty.Equals(Difficulty.easy)) {
+            maxSpeed = 5f;
+            rate = 1f;
+        }
+        else if (difficulty.Equals(Difficulty.medium)) {
+            maxSpeed = 7f;
+            rate = 2f;
+        }
+        else if (difficulty.Equals(Difficulty.hard)) {
+            maxSpeed = 9f;
+            rate = 3f;
+        }
+        else {
+            Debug.Log("An error has occured and a difficulty has not been selected somehow.");
+        }
+
+
     }
 
+    public void setDifficulty(int _difficulty){
+        difficulty = (Difficulty)_difficulty;
+    }
 
     void moveUp(float speed)
     {
@@ -83,7 +107,7 @@ public class Enemy_AI : MonoBehaviour
         my_rigibody.velocity = Vector3.zero;
     }
 
-    IEnumerator addPrecision(float rate)
+    IEnumerator addPrecision()
     {
         while (true)
         {

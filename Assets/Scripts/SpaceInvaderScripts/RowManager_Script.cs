@@ -30,7 +30,7 @@ public class RowManager_Script : MonoBehaviour
     void Update()
     {
         if (position.position.z <= 8) {
-            gameManager.GameOver();
+            gameManager.gameOver();
         }
     }
 

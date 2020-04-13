@@ -136,11 +136,13 @@ public class PongBallMovement : MonoBehaviour
 
     }
     //for pausing while in menu
+    //deprecated
     public void Pause() {
         ball.velocity = Vector3.zero;
 
     }
     //unpause when exit menu
+    //deprecated
     public void Unpause() {
         ball.velocity = new Vector3(Xspeed, Yspeed, 0f);
 

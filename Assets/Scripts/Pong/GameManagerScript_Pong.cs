@@ -15,10 +15,19 @@ public class GameManagerScript_Pong : MonoBehaviour {
     private bool started = false;
     [SerializeField] private GameObject PauseMenuUI;
 
+    [SerializeField] GameObject scoreInputMenu;
+    [SerializeField] TextMeshProUGUI inputPanelScore;
+    [SerializeField] TMP_InputField nameInput;
+    [SerializeField] GameObject diffMenu;
+    private bool lost = false;
+    private bool gameOver = false;
+    public bool paused;
+
+
     // Start is called before the first frame update
-    void Start() 
-    {
-        
+    void Start() {
+        paused = true;
+
     }
 
     // Update is called once per frame
@@ -27,15 +36,25 @@ public class GameManagerScript_Pong : MonoBehaviour {
             StartCoroutine(SpawnBall());
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !PauseMenuUI.activeSelf) {
+        if (Input.GetKeyDown(KeyCode.Escape) && !PauseMenuUI.activeSelf && !diffMenu.activeSelf) {
             Debug.Log("Pausing the game");
             PauseMenuUI.SetActive(true);
-            pongBallScript.Pause();
+            paused = true;
+            //pongBallScript.Pause();
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && PauseMenuUI.activeSelf) {
             Debug.Log("Un-pausing the game");
             PauseMenuUI.SetActive(false);
-            pongBallScript.Unpause();
+            paused = false;
+            //pongBallScript.Unpause();
+        }
+
+        
+        if (paused) {
+            Time.timeScale = 0f;
+        }
+        else {
+            Time.timeScale = 1f;
         }
 
     }
@@ -76,6 +95,10 @@ public class GameManagerScript_Pong : MonoBehaviour {
     #else
          Application.Quit();
     #endif
+    }
+
+    public void un_pause() {
+        paused = false;
     }
 
 
