@@ -9,6 +9,8 @@ public class GameManagerScript_Pong : MonoBehaviour {
     public int playerScore = 0;
     public TextMeshProUGUI PlayerScoreText;
     public int enemyScore = 0;
+    public int tieBreakerScore = 12;
+    public bool tieBreaker = false;
     public TextMeshProUGUI EnemyScoreText;
     [SerializeField] private GameObject pongBall;
     [SerializeField] private PongBallMovement pongBallScript;
@@ -22,7 +24,6 @@ public class GameManagerScript_Pong : MonoBehaviour {
     private bool lost = false;
     private bool gameOver = false;
     public bool paused;
-
 
     // Start is called before the first frame update
     void Start() {
@@ -73,12 +74,52 @@ public class GameManagerScript_Pong : MonoBehaviour {
         playerScore += 1;
         PlayerScoreText.text = playerScore.ToString();
         Debug.Log(playerScore);
+
+        checkForTie();
+        if (!tieBreaker && playerScore == 11)
+        {
+            win();
+        }
+        else if (playerScore == 12)
+        {
+            win();
+        }
     }
 
     public void updateEnemyScore() {
         enemyScore += 1;
         EnemyScoreText.text = enemyScore.ToString();
         Debug.Log(enemyScore);
+
+        checkForTie();
+        if (!tieBreaker && enemyScore == 11)
+        {
+            lose();
+        }
+        else if (enemyScore == 12)
+        {
+            lose();
+        }
+    }
+
+    public void checkForTie()
+    {
+        if (enemyScore == 10 && playerScore == 10)
+        {
+            tieBreaker = true;
+        }
+    }
+
+    public void win()
+    {
+        //bring up winning screen here!
+    }
+
+    public void lose()
+    {
+        lost = true;
+        paused = true;
+        //bring up lose screen here!
     }
 
     public void MainMenu(string a) {

@@ -12,6 +12,7 @@ public class PongBallMovement : MonoBehaviour
 
     [SerializeField] GameManagerScript_Pong gameManager;
     [SerializeField] SoundManagerScriptPong soundManager;
+    [SerializeField] GameObject explosion;
 
 
     [SerializeField] bool randomizeSpeed;
@@ -85,13 +86,28 @@ public class PongBallMovement : MonoBehaviour
             Yspeed = -Yspeed;
         }
 
-        else if (collision.gameObject.name == "Player" || collision.gameObject.name == "Enemy") {
+        else if (collision.gameObject.name == "Player") {
             //send right - x
             //applyForceToBall(Vector3.right * 2 * Xspeed);
             Debug.Log("hit a paddle");
             ball.velocity = new Vector3(-Xspeed, Yspeed, 0f);
             Xspeed = -Xspeed;
             soundManager.playSound("bounce");
+
+            explosion.SetActive(true);
+            explosion.transform.position = new Vector3(transform.position.x + 4f, transform.position.y, transform.position.z);
+        }
+        else if (collision.gameObject.name == "Enemy")
+        {
+            //send right - x
+            //applyForceToBall(Vector3.right * 2 * Xspeed);
+            Debug.Log("hit a paddle");
+            ball.velocity = new Vector3(-Xspeed, Yspeed, 0f);
+            Xspeed = -Xspeed;
+            soundManager.playSound("bounce");
+
+            explosion.SetActive(true);
+            explosion.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         }
 
         //score

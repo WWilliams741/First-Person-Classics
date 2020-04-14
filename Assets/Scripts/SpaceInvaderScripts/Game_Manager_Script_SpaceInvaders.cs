@@ -31,7 +31,6 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     [SerializeField] TMP_InputField nameInput;
     private bool gameEnd = false;
 
-
     private Vector3 playerStart;
     private Coroutine[] rows;
     private Transform shootTrans;
