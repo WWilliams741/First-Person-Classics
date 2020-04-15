@@ -9,7 +9,7 @@ public class GameManagerScript_Pong : MonoBehaviour {
     public int playerScore = 0;
     public TextMeshProUGUI PlayerScoreText;
     public int enemyScore = 0;
-    public int tieBreakerScore = 12;
+    public int finalScore = 0;
     public bool tieBreaker = false;
     public TextMeshProUGUI EnemyScoreText;
     [SerializeField] private GameObject pongBall;
@@ -79,11 +79,11 @@ public class GameManagerScript_Pong : MonoBehaviour {
         Debug.Log(playerScore);
 
         checkForTie();
-        if (!tieBreaker && playerScore == 11)
+        if (!tieBreaker && playerScore == 10)
         {
             win();
         }
-        else if (playerScore == 12)
+        else if (playerScore - enemyScore == 2)
         {
             win();
         }
@@ -95,11 +95,11 @@ public class GameManagerScript_Pong : MonoBehaviour {
         Debug.Log(enemyScore);
 
         checkForTie();
-        if (!tieBreaker && enemyScore == 11)
+        if (!tieBreaker && enemyScore == 10)
         {
             lose();
         }
-        else if (enemyScore == 12)
+        else if (enemyScore - playerScore == 2)
         {
             lose();
         }
@@ -118,6 +118,8 @@ public class GameManagerScript_Pong : MonoBehaviour {
         //bring up winning screen here!
         gameOver = true;
         paused = true;
+        finalScore = playerScore - enemyScore;
+
         scoreInputMenu.SetActive(true);
         playerScore = playerScore - enemyScore >= 0 ? playerScore - enemyScore : 0;
         inputPanelScore.text = "Your score is " + playerScore + " points!";
@@ -128,6 +130,7 @@ public class GameManagerScript_Pong : MonoBehaviour {
         lost = true;
         paused = true;
         gameOver = true;
+        finalScore = 0;
 
         //bring up lose screen here!
         scoreInputMenu.SetActive(true);
