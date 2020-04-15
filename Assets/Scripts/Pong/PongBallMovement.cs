@@ -9,6 +9,7 @@ public class PongBallMovement : MonoBehaviour
     [SerializeField] GameObject pongBall;
     [SerializeField] float Xspeed;
     [SerializeField] float Yspeed;
+    [SerializeField] float speed = 10;
 
     [SerializeField] GameManagerScript_Pong gameManager;
     [SerializeField] SoundManagerScriptPong soundManager;
@@ -144,8 +145,8 @@ public class PongBallMovement : MonoBehaviour
             ball.velocity = new Vector3(Xspeed, Yspeed, 0f);
         }*/
         int randomAngle = (int)Random.Range(-50,50) + (int)Random.Range(0, 1) * 180;
-        Yspeed = 10 * Mathf.Sin(randomAngle);
-        Xspeed = 10 * Mathf.Cos(randomAngle);
+        Yspeed = speed * Mathf.Sin(randomAngle);
+        Xspeed = speed * Mathf.Cos(randomAngle);
         ball.velocity = new Vector3(Xspeed, Yspeed, 0f);
 
 

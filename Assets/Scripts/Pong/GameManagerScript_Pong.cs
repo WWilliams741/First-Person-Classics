@@ -16,6 +16,9 @@ public class GameManagerScript_Pong : MonoBehaviour {
     [SerializeField] private PongBallMovement pongBallScript;
     private bool started = false;
     [SerializeField] private GameObject PauseMenuUI;
+    [SerializeField] private GameObject LoseMenuUI;
+    [SerializeField] private GameObject WinMenuUI;
+
 
     [SerializeField] GameObject scoreInputMenu;
     [SerializeField] TextMeshProUGUI inputPanelScore;
@@ -113,13 +116,41 @@ public class GameManagerScript_Pong : MonoBehaviour {
     public void win()
     {
         //bring up winning screen here!
+        gameOver = true;
+        paused = true;
+        scoreInputMenu.SetActive(true);
+        playerScore = playerScore - enemyScore >= 0 ? playerScore - enemyScore : 0;
+        inputPanelScore.text = "Your score is " + playerScore + " points!";
     }
 
     public void lose()
     {
         lost = true;
         paused = true;
+        gameOver = true;
+
         //bring up lose screen here!
+        scoreInputMenu.SetActive(true);
+        playerScore = playerScore - enemyScore >= 0 ? playerScore - enemyScore : 0;
+        inputPanelScore.text = "Your score is " + playerScore + " points!";
+    }
+
+    public void menuOpen() {
+        PersistantGameManager.Instance.addPlayerFrogger(nameInput.text, playerScore);
+        scoreInputMenu.SetActive(false);
+        if (lost) {
+
+            LoseMenuUI.SetActive(true);
+
+        }
+        else {
+            WinMenuUI.SetActive(true);
+
+        }
+    }
+    public void restart() {
+        SceneManager.LoadScene("Pong");
+
     }
 
     public void MainMenu(string a) {
