@@ -141,6 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c885f3fc309bad542982e7086005fef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataPath: 
+  extenstion: .Corona
 --- !u!4 &438968237
 Transform:
   m_ObjectHideFlags: 0
