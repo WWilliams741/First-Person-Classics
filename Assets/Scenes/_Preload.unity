@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataPath: 
   extenstion: .Corona
+  maxScoreCount: 5
 --- !u!4 &438968237
 Transform:
   m_ObjectHideFlags: 0

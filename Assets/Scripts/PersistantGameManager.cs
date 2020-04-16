@@ -9,6 +9,7 @@ public class PersistantGameManager : MonoBehaviour {
     [HideInInspector] public string dataPath;
     public string extenstion;
     [HideInInspector] public HighScoreData highScoreData;
+    [SerializeField] private int maxScoreCount;
 
     private static PersistantGameManager _instance;
 
@@ -36,7 +37,6 @@ public class PersistantGameManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        LoadData();
         SceneManager.LoadScene(1);
         /*
         highScores.Add(new player("Mahesh Chand", 35));
@@ -63,30 +63,45 @@ public class PersistantGameManager : MonoBehaviour {
     public void addPlayerMineSweeper(string _name, int _score) {
         highScoreData.highScoresMS.Add(new player(_name, _score));
         highScoreData.highScoresMS.Sort();
-        checkForMoreThanFive(highScoreData.highScoresMS);
+        checkForMoreThanMaxScorecount(highScoreData.highScoresMS);
+        SaveData();
     }
     public void addPlayerFrogger(string _name, int _score) {
         highScoreData.highScoresFrogger.Add(new player(_name, _score));
         highScoreData.highScoresFrogger.Sort();
-        checkForMoreThanFive(highScoreData.highScoresFrogger);
+        checkForMoreThanMaxScorecount(highScoreData.highScoresFrogger);
+        SaveData();
     }
     public void addPlayerSpaceInvaders(string _name, int _score) {
         highScoreData.highScoresSI.Add(new player(_name, _score));
         highScoreData.highScoresSI.Sort();
-        checkForMoreThanFive(highScoreData.highScoresSI);
+        checkForMoreThanMaxScorecount(highScoreData.highScoresSI);
+        SaveData();
     }
     public void addPlayerPong(string _name, int _score) {
         highScoreData.highScoresPong.Add(new player(_name, _score));
         highScoreData.highScoresPong.Sort();
-        checkForMoreThanFive(highScoreData.highScoresPong);
+        checkForMoreThanMaxScorecount(highScoreData.highScoresPong);
+        SaveData();
     }
-    public void checkForMoreThanFive(List<player> gameScores)
+    public void checkForMoreThanMaxScorecount(List<player> gameScores)
     {
+        List<player> temp = new List<player>();
         if (gameScores.Count > 5)
         {
             // do logic for adding beyond five here!
             // iterate over and then get top five and remove the rest.
+            
+            for (int i = gameScores.Count - maxScoreCount; i < gameScores.Count; i++)
+            {
+                if (i < 0)
+                {
+                    i = 0;
+                }
+                temp.Add(gameScores[i]);
+            }
         }
+        gameScores = temp;
     }
 
     public void CreateSaveObjects()
@@ -116,23 +131,3 @@ public class PersistantGameManager : MonoBehaviour {
         }
     }
 }
-
-public class player : System.IComparable<player> {
-    public string name;
-    public int score;
-
-    public player(string _name, int _score) {
-        name = _name;
-        score = _score;
-    }
-    public int CompareTo(player other) {
-        if (other == null) {
-            return 1;
-        }
-
-        //Return the difference in score.
-        return other.score - score;
-    }
-}
-
-

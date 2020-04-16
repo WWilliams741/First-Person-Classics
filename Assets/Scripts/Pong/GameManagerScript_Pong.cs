@@ -83,7 +83,7 @@ public class GameManagerScript_Pong : MonoBehaviour {
         {
             win();
         }
-        else if (playerScore - enemyScore == 2)
+        else if (tieBreaker && playerScore - enemyScore == 2)
         {
             win();
         }
@@ -99,7 +99,7 @@ public class GameManagerScript_Pong : MonoBehaviour {
         {
             lose();
         }
-        else if (enemyScore - playerScore == 2)
+        else if (tieBreaker && enemyScore - playerScore == 2)
         {
             lose();
         }
@@ -139,7 +139,7 @@ public class GameManagerScript_Pong : MonoBehaviour {
     }
 
     public void menuOpen() {
-        PersistantGameManager.Instance.addPlayerFrogger(nameInput.text, playerScore);
+        PersistantGameManager.Instance.addPlayerFrogger(nameInput.text, finalScore);
         scoreInputMenu.SetActive(false);
         if (lost) {
 

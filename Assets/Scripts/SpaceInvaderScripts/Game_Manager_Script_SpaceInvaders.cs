@@ -29,6 +29,7 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     [SerializeField] GameObject scoreInputMenu;
     [SerializeField] TextMeshProUGUI inputPanelScore;
     [SerializeField] TMP_InputField nameInput;
+    [SerializeField] TextMeshProUGUI LoseMenuScore;
     private bool gameEnd = false;
 
     private Vector3 playerStart;
@@ -390,6 +391,8 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
     public void gameOver() {
         gameEnd = true;
         paused = true;
+        inputPanelScore.text = "Score: " + score.ToString();
+        LoseMenuScore.text = "Final Score: " + score.ToString();
         scoreInputMenu.SetActive(true);
     }
 
