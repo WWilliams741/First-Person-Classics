@@ -2,18 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenuScript : MonoBehaviour {
 
-    [SerializeField]
-    private float stuff;
-    private float morestuff;
-    private float evenmorestuff;
-    [SerializeField]
+    [SerializeField] TextMeshProUGUI[] MSNameArray;
+    [SerializeField] TextMeshProUGUI[] MSScoreArray;
+
+    [SerializeField] TextMeshProUGUI[] FroggerNameArray;
+    [SerializeField] TextMeshProUGUI[] FroggerScoreArray;
+
+    [SerializeField] TextMeshProUGUI[] SINameArray;
+    [SerializeField] TextMeshProUGUI[] SIScoreArray;
+
+    [SerializeField] TextMeshProUGUI[] PongNameArray;
+    [SerializeField] TextMeshProUGUI[] PongScoreArray;
+
+
+
 
     // Start is called before the first frame update
     void Start()    {
-        
+        //update minesweeper highscore board on load
+        for (int i = 0; i < 5 && i < PersistantGameManager.Instance.highScoreData.highScoresMS.Count; i++) {
+            MSNameArray[i].text = PersistantGameManager.Instance.highScoreData.highScoresMS[i].name;
+            MSScoreArray[i].text = PersistantGameManager.Instance.highScoreData.highScoresMS[i].score.ToString();
+        }
+        //update Frogger highscore board on load
+        for (int i = 0; i < 5 && i < PersistantGameManager.Instance.highScoreData.highScoresFrogger.Count; i++) {
+            FroggerNameArray[i].text = PersistantGameManager.Instance.highScoreData.highScoresFrogger[i].name;
+            FroggerScoreArray[i].text = PersistantGameManager.Instance.highScoreData.highScoresFrogger[i].score.ToString();
+        }
+        //update Space Invaders highscore board on load
+        for (int i = 0; i < 5 && i < PersistantGameManager.Instance.highScoreData.highScoresSI.Count; i++) {
+            SINameArray[i].text = PersistantGameManager.Instance.highScoreData.highScoresSI[i].name;
+            SIScoreArray[i].text = PersistantGameManager.Instance.highScoreData.highScoresSI[i].score.ToString();
+        }
+        //update pong highscore board on load
+        for (int i = 0; i < 5 && i < PersistantGameManager.Instance.highScoreData.highScoresPong.Count; i++) {
+            PongNameArray[i].text = PersistantGameManager.Instance.highScoreData.highScoresPong[i].name;
+            PongScoreArray[i].text = PersistantGameManager.Instance.highScoreData.highScoresPong[i].score.ToString();
+        }
+
+
+
     }
 
     // Update is called once per frame

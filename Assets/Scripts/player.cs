@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class player
-{
+public class player: System.IComparable<player> {
     public string name;
     public int score;
 
