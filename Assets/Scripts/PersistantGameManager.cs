@@ -87,28 +87,23 @@ public class PersistantGameManager : MonoBehaviour {
     public void checkForMoreThanMaxScorecount(List<player> gameScores)
     {
         List<player> temp = new List<player>();
-        if (gameScores.Count > 5)
+        if (gameScores.Count > maxScoreCount)
         {
             // do logic for adding beyond five here!
             // iterate over and then get top five and remove the rest.
             
             for (int i = gameScores.Count - maxScoreCount; i < gameScores.Count; i++)
             {
-                if (i < 0)
-                {
-                    i = 0;
-                }
                 temp.Add(gameScores[i]);
             }
+            gameScores = temp;
         }
-        gameScores = temp;
     }
 
     public void CreateSaveObjects()
     {
         highScoreData = new HighScoreData("/High Score Data");
         dataPath = Application.persistentDataPath + highScoreData.GetFileName() + extenstion;
-        Debug.Log(dataPath);
         LoadData();
     }
 

@@ -143,6 +143,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataPath: 
   extenstion: .Corona
+  highScoreData:
+    highScoresMS: []
+    highScoresFrogger: []
+    highScoresSI: []
+    highScoresPong: []
   maxScoreCount: 5
 --- !u!4 &438968237
 Transform:
