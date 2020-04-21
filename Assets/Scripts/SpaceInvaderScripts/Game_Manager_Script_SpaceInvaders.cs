@@ -97,11 +97,6 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
         if (!EnemyRocket.activeSelf) {
             InvadersShoot();
         }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            killAllInvaders();
-        }
     }
     /*
     public int getLeftMost()
@@ -133,18 +128,6 @@ public class Game_Manager_Script_SpaceInvaders : MonoBehaviour
 
         return right;
     }*/
-
-    public void killAllInvaders()
-    {
-        for (int k = 0; k < rowManagers.Length; k++)
-        {
-            for (int l = 0; l < rowManagers[0].Invaders.Length; l++)
-            {
-                rowManagers[k].killInvader(l);
-            }
-        }
-        winRound();
-    }
 
     public void hitBoundry(string Side) {
         if (Side == "right" && !hitRight) {
