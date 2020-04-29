@@ -1,6 +1,11 @@
 # First-Person-Classics
 First-Personifying the Classics
 
+Unity Version:
+2018.4.20f1
+
+Instructions:
+- You MUST start the game at _Preload or the persistentGameManager will not be in the game and you will not be able to access high scores or save. Also, the explosions used in the game will not function properly without it.
 
 References:
 
