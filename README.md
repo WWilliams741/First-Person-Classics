@@ -27,3 +27,14 @@ Unity Asset Store (all assets included in these bundles):
 Mixamo:
 
 - Single model and two walking (forward and backwards) animations.
+
+Music/Sounds (All sounds were directly downloaded or converted using MP3 converter for YouTube):
+
+- Nintendo Switch 'Click' sound: https://www.youtube.com/watch?v=wvqY2tmJ0H8
+- Big Explosion Effect: https://www.youtube.com/watch?v=bhZs3ALdL7Y
+- All sounds from "Sounds Effects and Music from Space Invaders the Classic Arcade Game": http://www.classicgaming.cc/classics/space-invaders/sounds
+- TF2 Demo-Man "Ka-Boom!": https://www.youtube.com/watch?v=WxjGZo8oN5Y
+- MineSweeper "Music" (custom made by Geekdrums): https://www.youtube.com/watch?v=v_-6nG7pY4Y
+- Pong Sound Effect (ball bouncing off paddle): https://www.youtube.com/watch?v=IExAq3GBRvI
+- The Original Tetris Theme: https://www.youtube.com/watch?v=NmCCQxVBfyM
+
